@@ -19,7 +19,7 @@ Panstwo::Panstwo(string nazwa, int powierzchnia, int populacja)
 	this->pkb=0;
 }
 
-Panstwo::~Panstwo(void)
+Panstwo::~Panstwo()
 {
 	cout<<"Panstwo::~Panstwo(void) "<<endl;
 }

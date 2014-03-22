@@ -3,6 +3,10 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include "Panstwo.h"
+#include "Pasmo_gorskie.h"
+
 using namespace std;
 
 class Kontynent
@@ -23,8 +27,8 @@ public:
 	
 private:
 	string nazwa;
-	Panstwo* panstwa[];
-	Pasmo_gorskie* pasma_gorskie[];
+	vector<Panstwo*> panstwa;
+	vector<Pasmo_gorskie*> pasma_gorskie;
 	int powierzchnia;
 	
 };

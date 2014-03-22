@@ -1,3 +1,9 @@
+#ifndef KONTYNENT_H_
+#define KONTYNENT_H_
+
+#include <iostream>
+#include <string>
+using namespace std;
 
 class Kontynent
 {
@@ -22,3 +28,5 @@ private:
 	int powierzchnia;
 	
 };
+
+#endif /* KONTYNENT_H_ */

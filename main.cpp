@@ -31,9 +31,9 @@ int main(void)
 
 bool test_pobierz_nazwe_panstwa()
 {
-	Panstwo* niemcy = new Panstwo("Niemcy", 100, 100);
-	cout << niemcy -> pobierz_nazwe() << endl;
-	if("Niemcy" == niemcy -> pobierz_nazwe())
+	Panstwo niemcy("Niemcy", 100, 100);
+	cout << niemcy.pobierz_nazwe() << endl;
+	if("Niemcy" == niemcy.pobierz_nazwe())
 		return true;
 	else
 		return false;
@@ -41,8 +41,8 @@ bool test_pobierz_nazwe_panstwa()
 
 void test_operator_mniejszosci_panstwa()
 {
-	Panstwo* niemcy = new Panstwo("Niemcy", 100, 100);
-	Panstwo* usa = new Panstwo("Usa", 200, 10);
+	Panstwo niemcy("Niemcy", 100, 100);
+	Panstwo usa("Usa", 200, 10);
 	if(niemcy<usa)
 		cout<<"Operator mniejszosci panstwa DZIALA"<<endl;
 	else

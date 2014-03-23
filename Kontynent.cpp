@@ -54,16 +54,21 @@ void Kontynent::dodaj_panstwo(Panstwo& nowe_panstwo)
 	if(panstwa.empty())
 	{
 		this->panstwa.push_back(nowe_panstwo);
+		cout<<"dodano nowe panstwo"<<endl;
 	}
 	else
 	{
+		cout<<"dodano nowe panstwo"<<endl;
 		this->panstwa.push_back(nowe_panstwo);
 		int i=panstwa.size() - 1;
 		while(i>0 && panstwa[i]>panstwa[i-1])
 		{
-			Panstwo& tymczasowe=panstwa[i];
+			cout<<"i jest rowne: "<<i<<endl;
+			cout<<"porownywane panstwa i "<<panstwa[i].pobierz_nazwe()<<" i-1: "<<panstwa[i-1].pobierz_nazwe()<<endl;
+			Panstwo tymczasowe=panstwa[i];
 			panstwa[i]=panstwa[i-1];
 			panstwa[i-1]=tymczasowe;
+			cout<<"po zamianie i-te "<< panstwa[i].pobierz_nazwe()<<" i-1: "<<panstwa[i-1].pobierz_nazwe()<<endl;
 			i--;
 		}
 	}

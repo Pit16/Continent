@@ -9,30 +9,66 @@
 #include <iostream>
 #include "Panstwo.h"
 #include "Pasmo_gorskie.h"
+#include "Kontynent.h"
 
 using namespace std;
 
+bool test_pobierz_nazwe_panstwa();
+void test_operator_mniejszosci_panstwa();
+void test_operator_wiekszosci_panstwa();
+void test_dodawania_panstw();
+
 int main(void)
 {
-	Panstwo* niemcy=new Panstwo("Niemcy", 100, 34);
-	cout<<niemcy->pobierz_nazwe()<<endl;
-	cout<<niemcy->pobierz_powierzchnie()<<endl;
-	cout<<niemcy->pobierz_populacje()<<endl;
-	cout<<niemcy->pobierz_stolice()<<endl;
-	niemcy->ustaw_stolice("Berlin");
-	niemcy->ustaw_jezyk("niemiecki");
-	niemcy->ustaw_pkb(2);
-	cout<<niemcy->pobierz_stolice()<<endl;
-	cout<<niemcy->pobierz_jezyk()<<endl;
-	cout<<niemcy->pobierz_pkb()<<endl;
-	Pasmo_gorskie* tatry=new Pasmo_gorskie("Tatry", 1300);
-	cout<<tatry->pobierz_nazwe()<<endl;
-	cout<<tatry->pobierz_srednia_wysokosc()<<endl;
-	tatry->ustaw_najwyzszy_szczyt("Rysy");
-	cout<<tatry->pobierz_najwyzszy_szczyt()<<endl;
-	cout<<tatry->pobierz_wysokosc_najwyzszy_szczyt()<<endl;
-	tatry->ustaw_wysokosc(2499);
-	cout<<tatry->pobierz_wysokosc_najwyzszy_szczyt()<<endl;
+	test_dodawania_panstw();
+	test_operator_mniejszosci_panstwa();
+	test_operator_wiekszosci_panstwa();
 
 	return 0;
+
+}
+
+
+bool test_pobierz_nazwe_panstwa()
+{
+	Panstwo* niemcy = new Panstwo("Niemcy", 100, 100);
+	cout << niemcy -> pobierz_nazwe() << endl;
+	if("Niemcy" == niemcy -> pobierz_nazwe())
+		return true;
+	else
+		return false;
+}
+
+void test_operator_mniejszosci_panstwa()
+{
+	Panstwo* niemcy = new Panstwo("Niemcy", 100, 100);
+	Panstwo* usa = new Panstwo("Usa", 200, 10);
+	if(niemcy<usa)
+		cout<<"Operator mniejszosci panstwa DZIALA"<<endl;
+	else
+		cout<<"Operator mniejszosci NIE DZIALA"<<endl;
+}
+
+
+void test_operator_wiekszosci_panstwa()
+{
+	Panstwo niemcy("Niemcy", 100, 100);
+	Panstwo usa("Usa", 200, 10);
+	if(usa>niemcy)
+		cout<<"Operator wiekszosci panstwa DZIALA"<<endl;
+	else
+		cout<<"Operator wiekszosci NIE DZIALA"<<endl;
+}
+void test_dodawania_panstw()
+{
+
+	Panstwo polska("Polska", 50, 100);
+	Panstwo andora("Andora", 100, 10);
+	Panstwo anglia("Anglia", 90, 10);
+	Kontynent europa("Europa");
+	europa.dodaj_panstwo(polska);
+	europa.dodaj_panstwo(andora);
+	europa.dodaj_panstwo(anglia);
+	cout<<europa.pobierz_powierzchnie()<<endl;
+	cout<<europa.najwieksze_panstwo()<<endl;
 }

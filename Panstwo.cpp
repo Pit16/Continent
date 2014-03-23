@@ -69,3 +69,26 @@ void Panstwo::ustaw_pkb(int pkb)
 	this->pkb=pkb;
 }
 
+bool Panstwo::operator<(const Panstwo& p1)
+{
+	cout<<"operator mniejszosci"<<endl;
+	cout<<this->powierzchnia<<" < "<<p1.powierzchnia<<endl;
+	return this->powierzchnia < p1.powierzchnia;
+}
+
+bool Panstwo::operator>(const Panstwo& p1)
+{
+	cout<<"operator wiekszosci"<<endl;
+	cout<<this->powierzchnia<<" > "<<p1.powierzchnia<<endl;
+	return this->powierzchnia > p1.powierzchnia;
+}
+
+bool Panstwo::operator !=(const Panstwo& p1)
+{
+	return this->powierzchnia != p1.powierzchnia;
+}
+
+bool Panstwo::operator ==(const Panstwo& p1)
+{
+	return this->powierzchnia == p1.powierzchnia;
+}

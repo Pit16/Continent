@@ -26,19 +26,21 @@ string Kontynent::pobierz_nazwe()
 
 int Kontynent::pobierz_powierzchnie()
 {
+	cout<<"Powierzchnia kontynentu "<<pobierz_nazwe()<<" wynosi: ";
 	return powierzchnia;
 }
 
 string Kontynent::najwieksze_panstwo()
 {
-	return 0;		// TODO: nazwa najwiekszego panstwa
+	cout<<"Najwieksze panstwo kontynentu "<<pobierz_nazwe()<<" to: ";
+	return panstwa[0].pobierz_nazwe();		// TODO: nazwa najwiekszego panstwa
 }
 
 int Kontynent::srednie_zaludnienie()
 {
 	int liczba_ludnosci=0;
 	for(unsigned i=0; i<panstwa.size(); i++) //TODO: co sie stanie gdy wartosci sa rowne 0
-		liczba_ludnosci += panstwa[i]->pobierz_populacje();
+		liczba_ludnosci += panstwa[i].pobierz_populacje();
 	return liczba_ludnosci/powierzchnia;
 }
 
@@ -47,13 +49,29 @@ string Kontynent::najwyzsza_gora()
 	return 0;		//TODO: pokazac najwyzsza_gora();
 }
 
-void Kontynent::dodaj_panstwo(Panstwo* nowe_panstwo)
+void Kontynent::dodaj_panstwo(Panstwo& nowe_panstwo)
 {
-	this->panstwa.push_back(nowe_panstwo);
-	this->powierzchnia += nowe_panstwo->pobierz_powierzchnie();
+	if(panstwa.empty())
+	{
+		this->panstwa.push_back(nowe_panstwo);
+	}
+	else
+	{
+		this->panstwa.push_back(nowe_panstwo);
+		int i=panstwa.size() - 1;
+		while(i>0 && panstwa[i]>panstwa[i-1])
+		{
+			Panstwo& tymczasowe=panstwa[i];
+			panstwa[i]=panstwa[i-1];
+			panstwa[i-1]=tymczasowe;
+			i--;
+		}
+	}
+	this->powierzchnia += nowe_panstwo.pobierz_powierzchnie();
+
 }
 
-void Kontynent::dodaj_pasmo(Pasmo_gorskie* nowe_pasmo)
+void Kontynent::dodaj_pasmo(Pasmo_gorskie& nowe_pasmo)
 {
 	this->pasma_gorskie.push_back(nowe_pasmo);
 }

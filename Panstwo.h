@@ -18,6 +18,11 @@ public:
 	void ustaw_stolice(string stolica);
 	void ustaw_jezyk(string jezyk);
 	void ustaw_pkb(int pkb);
+	bool operator<(const Panstwo &p );
+	bool operator>(const Panstwo &p );
+	bool operator==(const Panstwo &p );
+	bool operator!=(const Panstwo &p );
+
 private:
 	string nazwa;
 	int powierzchnia;

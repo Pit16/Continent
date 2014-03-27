@@ -27,6 +27,8 @@ void test_zliczanie_kontynentow();
 void test_operator_strumieniowy_kontynent();
 void test_operator_przypisania_kontynent();
 void test_srednie_zaludnienie();
+void zmiana_parametrow(Kontynent&);
+void test_usuwanie_panstwa();
 /* TODO: interfejs u¿ytkownika
  * TODO: _DEBUG
  * TODO: pasma_gorskie
@@ -34,61 +36,76 @@ void test_srednie_zaludnienie();
 */
 int main(void)
 {
-	/*test_dodawania_panstw();
-	test_operator_mniejszosci_panstwa();
-	test_operator_wiekszosci_panstwa();
-	test_kopiowanie_kontynentu();
-	test_operator_rownosci_panstwa();
-	test_operator_nierownosci_panstwa();
-	//
-	int wejscie=0;
- 	while(1) {
- 		cout<<endl;
- 		cout<<"---------- MENU GLOWNE ----------"<<endl;
-  		cout<<"(1) uruchom program"<<endl;
- 		cout<<"(0) wyjscie\n"<<endl;
- 		cin>> wejscie;
- 		if(wejscie == 1) {		//wykonanie programu
- 			glowny_program();
- 		}
- 		else if(wejscie == 0) { //wyjscie z programu
- 			return 1;
- 		}
- 		else { 	//bledna liczba
- 			continue;
- 		}
- 	}
- 	*/
-	//test_kopiowanie_kontynentu();
-	//test_operator_strumieniowy_kontynent();
-	//test_operator_przypisania_kontynent();
-	test_srednie_zaludnienie();
+
+	test_usuwanie_panstwa();
+	//glowny_program();
 	return 0;
 
 }
 
 void glowny_program()
 {
+	Kontynent kontynent("Afryka");
 	int komenda = 0;
 	 	while(1)
 	 	{
 	 		cout<<endl;
 	 		cout<<"======== MENU PROGRAMU ========"<<endl;
 	 		cout<<"(0) Wyjscie z programu"<<endl;
-	 		cout<<"(1) Stworz kontynent"<<endl;
-	 		cout<<"(2) Stworz panstwo"<<endl;
-	 		cout<<"(3) Modyfikacja kontynentu"<<endl;
+	 		cout<<"(1) Wyswietl aktualny stan obiektu"<<endl;
+	 		cout<<"(2) Zmiana parametru obiektu"<<endl;
 	 		cin>> komenda;
 	 		switch(komenda)
 	 		{
 	 		case 0: return;
-	 		case 1: test_dodawania_kontynentu(); break;
-	 		case 2:	test_dodawania_panstw(); break;
-	 		case 3: cout<<"mad kontynentu"<<endl; break;
+	 		case 1: cout<<kontynent; break;			//TODO: stworzyc jeden kontynent ktory ma wszystko
+	 		case 2:	zmiana_parametrow(kontynent); break;
+
 	 		default: return;
 
 	 		}
 	 	}
+}
+
+void zmiana_parametrow(Kontynent& kontynent)
+{
+	for(int i=0; i<kontynent.pobierz_liczbe_panstw(); i++)
+		cout<<"nazwa panstwa nr: "<<i<<" : "<<kontynent[i]<<endl;
+
+	int indeks_panstwa=0;
+	while(1)
+	{
+		cout<<"WYBIERZ PANSTWO"<<endl;
+		cin>>indeks_panstwa;
+		if(indeks_panstwa<kontynent.pobierz_liczbe_panstw() && indeks_panstwa > 0)
+			{
+			string nazwa = " ", stolica= " ", jezyk = " ";
+			int powierzchnia=0, populacja=0, pkb=0;
+
+			kontynent.usun_panstwo(indeks_panstwa);
+			cout<<"Podaj nowa nazwe panstwa: "<<endl;
+			cin>>nazwa;
+			cout<<"Podaj nowa powierzchnie panstwa: "<<endl;
+			cin>>powierzchnia;
+			cout<<"Podaj nowa liczbe mieszkancow panstwa: "<<endl;
+			cin>>populacja;
+			cout<<"Podaj nowa nazwe stolicy panstwa: "<<endl;
+			cin>>stolica;
+			cout<<"Podaj nowy jezyk dla tego panstwa: "<<endl;
+			cin>>jezyk;
+			cout<<"Podaj nowe pkb dla tego panstwa: "<<endl;
+			cin>>pkb;
+			Panstwo nowe_panstwo(nazwa, powierzchnia, populacja);
+			nowe_panstwo.ustaw_stolice(stolica);
+			nowe_panstwo.ustaw_jezyk(jezyk);
+			nowe_panstwo.ustaw_pkb(pkb);
+			kontynent.dodaj_panstwo(nowe_panstwo);
+			}
+
+		else
+			cout<<"zly indeks"<<endl;
+		break;
+	}
 }
 
 bool test_pobierz_nazwe_panstwa()
@@ -219,6 +236,19 @@ void test_srednie_zaludnienie()
 	cout<<"srednie zaludnienie wynosi: "<<europa.srednie_zaludnienie()<<endl;
 }
 
+void test_usuwanie_panstwa()
+{
+	Panstwo andora("Andora", 100, 1056);
+	Panstwo anglia("Anglia", 90, 500);
+	Panstwo polska("Polska", 200, 400);
+	Kontynent europa("Europa");
+	europa.dodaj_panstwo(andora);
+	europa.dodaj_panstwo(anglia);
+	europa.dodaj_panstwo(polska);
+	cout<<europa<<endl;
+	europa.usun_panstwo(1);
+	cout<<europa;
+}
 /*
  * Kontynent k1, k2;
  * k1.dodajPanstwo..

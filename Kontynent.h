@@ -28,6 +28,7 @@ public:
 	static int pobierz_licznik();
 	friend ostream & operator<< (ostream &, Kontynent &);
 	int pobierz_liczbe_panstw();
+	void usun_panstwo(int);
 	
 private:
 	void zwieksz_tablice();

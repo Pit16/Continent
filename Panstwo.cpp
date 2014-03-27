@@ -10,7 +10,7 @@
 Panstwo::Panstwo(string nazwa, int powierzchnia, int populacja)
 {
 
-	cout<<"Panstwo::Panstwo() : "<<nazwa<<endl;
+	//cout<<"Panstwo::Panstwo() : "<<nazwa<<endl;
 	this->nazwa=nazwa;
 	this->powierzchnia=powierzchnia;
 	this->populacja=populacja;
@@ -30,7 +30,7 @@ Panstwo::Panstwo(const Panstwo& p)
 }
 Panstwo::~Panstwo()
 {
-	cout<<"Panstwo::~Panstwo(void) : "<<nazwa<<endl;
+	//cout<<"Panstwo::~Panstwo(void) : "<<nazwa<<endl;
 }
 
 string Panstwo::pobierz_nazwe()

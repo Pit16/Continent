@@ -10,7 +10,7 @@ int Kontynent::liczba_kontynentow=0;
 
 Kontynent::Kontynent(string nazwa)
 {
-	cout<<"Kontynent::Kontynent()"<<endl;
+	//cout<<"Kontynent::Kontynent()"<<endl;
 	this->nazwa=nazwa;
 	this->powierzchnia=0;
 	this->liczba_panstw=0;
@@ -35,7 +35,7 @@ Kontynent::Kontynent(const Kontynent& k)
 
 Kontynent::~Kontynent()
 {
-	cout<<"Kontynent::~Kontynent"<<endl;
+	//cout<<"Kontynent::~Kontynent"<<endl;
     //if(liczba_panstw > 0)
     	//delete []panstwa;
 }
@@ -184,4 +184,22 @@ ostream& operator<< (ostream& strumien, Kontynent& kontynent)
 		strumien<<"nazwa panstwa nr: "<<i<<" : "<<kontynent[i]<<endl;
 	strumien<<"nazwa najwiekszego panstwa: "<<kontynent.najwieksze_panstwo()<<endl;
 	return strumien;
+}
+
+void Kontynent::usun_panstwo(int indeks_panstwa)
+{
+	if(indeks_panstwa<0 || indeks_panstwa>liczba_panstw-1)
+		return;
+
+	Panstwo* tymaczasowe = new Panstwo[liczba_panstw-1];
+	for(int i=0; i<indeks_panstwa; i++)
+		tymaczasowe[i] = panstwa[i];
+	for(int i=indeks_panstwa; i<liczba_panstw-1; i++)
+	{
+		tymaczasowe[i] = panstwa[i+1];
+	}
+	powierzchnia-=panstwa[indeks_panstwa].pobierz_powierzchnie();
+	delete []panstwa;
+	panstwa=tymaczasowe;
+	liczba_panstw--;
 }

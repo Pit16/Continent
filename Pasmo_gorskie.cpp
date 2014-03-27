@@ -51,3 +51,8 @@ void Pasmo_gorskie::ustaw_wysokosc(int wysokosc_szczytu)
 {
 	this->wysokosc_szczytu=wysokosc_szczytu;
 }
+
+bool Pasmo_gorskie::operator ==(const Pasmo_gorskie &g)
+{
+	//return this->srednia_wysokosc==g.srednia_wysokosc;
+}

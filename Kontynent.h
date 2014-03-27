@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
 #include "Panstwo.h"
 #include "Pasmo_gorskie.h"
 
@@ -12,8 +11,8 @@ using namespace std;
 class Kontynent
 {
 public:
-	
 	Kontynent(string nazwa);
+	Kontynent(const Kontynent& k);
 	~Kontynent();
 	string pobierz_nazwe();
 	int pobierz_powierzchnie();
@@ -22,15 +21,18 @@ public:
 	string najwyzsza_gora();
 	void dodaj_panstwo(Panstwo& nowe_panstwo);
 	void dodaj_pasmo(Pasmo_gorskie& nowe_pasmo);
-	
-	
+	void zwieksz_static();
+	int pokaz_static();
 	
 private:
+	void zwieksz_tablice();
+	static int liczba_kontynentow;
 	string nazwa;
-	vector<Panstwo> panstwa;
-	vector<Pasmo_gorskie> pasma_gorskie;
+	Panstwo* panstwa;
+	// Pasmo_gorskie* pasma_gorskie;
 	int powierzchnia;
-	
+	int liczba_panstw;
+
 };
 
 #endif /* KONTYNENT_H_ */

@@ -15,6 +15,7 @@ public:
 	int pobierz_wysokosc_najwyzszy_szczyt();
 	void ustaw_najwyzszy_szczyt(string najwyzszy_szczyt);
 	void ustaw_wysokosc(int wysokosc_szczytu);
+	bool operator ==(const Pasmo_gorskie &g);
 private:
 	string nazwa;
 	int srednia_wyskosc;

@@ -7,6 +7,7 @@ using namespace std;
 class Panstwo
 {
 public: 
+	Panstwo(){}
 	Panstwo(string nazwa, int powierzchnia, int populacja);
 	~Panstwo();
 	string pobierz_nazwe();

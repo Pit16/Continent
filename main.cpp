@@ -72,3 +72,15 @@ void test_dodawania_panstw()
 	cout<<europa.pobierz_powierzchnie()<<endl;
 	cout<<europa.najwieksze_panstwo()<<endl;
 }
+
+/*
+ * Kontynent k1, k2;
+ * k1.dodajPanstwo..
+ * k1.dodajPasmo...
+ * k2 = k1;
+ * k1.pasmo[0].wysokosc = 0;
+ * cout << k1 << endl;
+ * cout << k2 << endl;
+ *
+ */
+

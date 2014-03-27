@@ -28,7 +28,7 @@ void test_dodaj_pasmo();
 
 using namespace std;
 
-/*int main()
+int main()
 {
 	test_pobierz_nazwe_panstwa();
 	test_operator_mniejszosci_panstwa();
@@ -47,7 +47,7 @@ using namespace std;
 	test_dodaj_pasmo();
 	return 0;
 }
-*/
+
 
 bool test_pobierz_nazwe_panstwa()
 {

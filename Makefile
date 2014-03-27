@@ -1,15 +1,20 @@
 CXXFLAGS =	-O2 -g -Wall -fmessage-length=0
 
-OBJS =		Continent.o
+OBJS =		Kontynent.cpp Panstwo.cpp Pasmo_gorskie.cpp
 
 LIBS =
 
 TARGET =	Continent.exe
 
-$(TARGET):	$(OBJS)
-	$(CXX) -o $(TARGET) $(OBJS) $(LIBS)
+$(TARGET):	$(OBJS) main.cpp
+	$(CXX) -o $(TARGET) $(OBJS) main.cpp $(LIBS)
 
 all:	$(TARGET)
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(TARGET)
+	
+test: $(OBJS) testy.cpp
+	$(CXX) -o Testuj.exe $(OBJS) testy.cpp $(LIBS)
+	./Testuj.exe
+	

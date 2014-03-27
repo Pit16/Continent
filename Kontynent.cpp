@@ -17,13 +17,20 @@ Kontynent::Kontynent(string nazwa)
 }
 Kontynent::~Kontynent()
 {
-	cout<<"Kontynent::Kontynent"<<endl;
+	cout<<"Kontynent::~Kontynent"<<endl;
+    //if(liczba_panstw > 0)
+    	//delete []panstwa;
 }
 
-/*Kontynent::Kontynent(const Kontynent& k)
+Kontynent::Kontynent(const Kontynent& k)
 {
-	strcpy(nazwa, k.nazwa);
-}*/
+	this->nazwa=k.nazwa;
+	this->powierzchnia=k.powierzchnia;
+	this->liczba_panstw=k.liczba_panstw;
+	if(liczba_panstw > 0)
+		this->panstwa=k.panstwa;
+
+}
 
 string Kontynent::pobierz_nazwe()
 {
@@ -39,7 +46,7 @@ int Kontynent::pobierz_powierzchnie()
 string Kontynent::najwieksze_panstwo()
 {
 	cout<<"Najwieksze panstwo kontynentu "<<pobierz_nazwe()<<" to: ";
-	return panstwa[0].pobierz_nazwe();		// TODO: nazwa najwiekszego panstwa
+	return panstwa[0].pobierz_nazwe();
 }
 
 /*int Kontynent::srednie_zaludnienie()
@@ -92,7 +99,7 @@ void Kontynent::zwieksz_tablice()
 {
 	liczba_panstw++;
 
-    cout<<"jestem w zwieksz_tablice"<<endl;
+    cout<<"jestem w: zwieksz_tablice"<<endl;
     Panstwo* nowa_tablica = new Panstwo[liczba_panstw];
 
     for (int i = 0; i < liczba_panstw-1; i++)
@@ -104,6 +111,18 @@ void Kontynent::zwieksz_tablice()
     	delete []panstwa;
 
     panstwa = nowa_tablica;
-    cout<<"jestem w zwieksz_tablice"<<endl;
+    cout<<"koniec: zwieksz_tablice"<<endl;
 
+}
+
+string Kontynent::operator[](int i)
+{
+	cout<<"operator indeksowania"<<endl;
+	if ( i>=liczba_panstw || i<0)
+	{
+		cout<<"przekroczona tablica"<<endl;
+		return "zly indeks";
+	}
+	else
+		return panstwa[i].pobierz_nazwe();
 }

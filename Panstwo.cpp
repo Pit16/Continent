@@ -85,10 +85,16 @@ bool Panstwo::operator>(const Panstwo& p1)
 
 bool Panstwo::operator !=(const Panstwo& p1)
 {
+
+	cout<<"operator nierownosci"<<endl;
+	cout<<this->powierzchnia<<" != "<<p1.powierzchnia<<endl;
 	return this->powierzchnia != p1.powierzchnia;
 }
 
 bool Panstwo::operator ==(const Panstwo& p1)
 {
+
+	cout<<"operator rownosci"<<endl;
+	cout<<this->powierzchnia<<" == "<<p1.powierzchnia<<endl;
 	return this->powierzchnia == p1.powierzchnia;
 }

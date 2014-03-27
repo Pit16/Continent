@@ -21,6 +21,7 @@ public:
 	string najwyzsza_gora();
 	void dodaj_panstwo(Panstwo& nowe_panstwo);
 	void dodaj_pasmo(Pasmo_gorskie& nowe_pasmo);
+	string operator[](int i);
 	void zwieksz_static();
 	int pokaz_static();
 	

@@ -16,18 +16,77 @@ using namespace std;
 bool test_pobierz_nazwe_panstwa();
 void test_operator_mniejszosci_panstwa();
 void test_operator_wiekszosci_panstwa();
+void test_operator_rownosci_panstwa();
+void test_operator_nierownosci_panstwa();
+void test_operator_indeksowania();
 void test_dodawania_panstw();
+void test_dodawania_kontynentu();
+void test_kopiowanie_kontynentu();
+void glowny_program();
+/*TODO: operator przypisania dla kontynentu
+ * TODO: zliczanie obiektów - static
+ * TODO: interfejs u¿ytkownika
+ * TODO: _DEBUG
+ * TODO: operator strumieniowy
+ * TODO: pasma_gorskie
 
+*/
 int main(void)
 {
-	test_dodawania_panstw();
+	/*test_dodawania_panstw();
 	test_operator_mniejszosci_panstwa();
 	test_operator_wiekszosci_panstwa();
+	test_kopiowanie_kontynentu();
+	test_operator_rownosci_panstwa();
+	test_operator_nierownosci_panstwa();
+	//
+	int wejscie=0;
+ 	while(1) {
+ 		cout<<endl;
+ 		cout<<"---------- MENU GLOWNE ----------"<<endl;
+  		cout<<"(1) uruchom program"<<endl;
+ 		cout<<"(0) wyjscie\n"<<endl;
+ 		cin>> wejscie;
+ 		if(wejscie == 1) {		//wykonanie programu
+ 			glowny_program();
+ 		}
+ 		else if(wejscie == 0) { //wyjscie z programu
+ 			return 1;
+ 		}
+ 		else { 	//bledna liczba
+ 			continue;
+ 		}
+ 	}
+ 	*/
+	test_operator_indeksowania();
 
 	return 0;
 
 }
 
+void glowny_program()
+{
+	int komenda = 0;
+	 	while(1)
+	 	{
+	 		cout<<endl;
+	 		cout<<"======== MENU PROGRAMU ========"<<endl;
+	 		cout<<"(0) Wyjscie z programu"<<endl;
+	 		cout<<"(1) Stworz kontynent"<<endl;
+	 		cout<<"(2) Stworz panstwo"<<endl;
+	 		cout<<"(3) Modyfikacja kontynentu"<<endl;
+	 		cin>> komenda;
+	 		switch(komenda)
+	 		{
+	 		case 0: return;
+	 		case 1: test_dodawania_kontynentu(); break;
+	 		case 2:	test_dodawania_panstw(); break;
+	 		case 3: cout<<"mad kontynentu"<<endl; break;
+	 		default: return;
+
+	 		}
+	 	}
+}
 
 bool test_pobierz_nazwe_panstwa()
 {
@@ -59,6 +118,38 @@ void test_operator_wiekszosci_panstwa()
 	else
 		cout<<"Operator wiekszosci NIE DZIALA"<<endl;
 }
+
+void test_operator_rownosci_panstwa()
+{
+	Panstwo chiny("Chiny", 10, 100);
+	Panstwo indie("Indie", 10, 10);
+	if(chiny == indie)
+		cout<<"Operator rownosci panstwa DZIALA"<<endl;
+	else
+		cout<<"Operator rownosci NIE DZIALA"<<endl;
+}
+
+
+void test_operator_nierownosci_panstwa()
+{
+	Panstwo chiny("Chiny", 30, 100);
+	Panstwo indie("Indie", 10, 10);
+	if(chiny != indie)
+		cout<<"Operator nierownosci panstwa DZIALA"<<endl;
+	else
+		cout<<"Operator nierownosci NIE DZIALA"<<endl;
+}
+
+void test_operator_indeksowania()
+{
+	Panstwo andora("Andora", 100, 10);
+	Panstwo polska("Polska", 50, 100);
+	Kontynent europa("Europa");
+	europa.dodaj_panstwo(andora);
+	europa.dodaj_panstwo(polska);
+	cout<<europa[1]<<endl;
+}
+
 void test_dodawania_panstw()
 {
 
@@ -71,6 +162,24 @@ void test_dodawania_panstw()
 	europa.dodaj_panstwo(anglia);
 	cout<<europa.pobierz_powierzchnie()<<endl;
 	cout<<europa.najwieksze_panstwo()<<endl;
+}
+
+void test_dodawania_kontynentu()
+{
+	Kontynent azja("Azja");
+	cout<<"dodano azja"<<endl;
+}
+
+void test_kopiowanie_kontynentu()
+{
+	cout<<"=======test kopiowania kontynentu========="<<endl;
+	Kontynent k1("pierwszy");
+	Panstwo anglia("Anglia", 90, 10);
+	k1.dodaj_panstwo(anglia);
+	Kontynent k2(k1);
+	cout<<k1.pobierz_powierzchnie()<<endl;
+	cout<<k2.pobierz_powierzchnie()<<endl;
+	cout<<"=======koniec testu kopiowania kontynentu========="<<endl;
 }
 
 /*

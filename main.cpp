@@ -11,7 +11,6 @@
 #include "Pasmo_gorskie.h"
 #include "Kontynent.h"
 
-#define _DEBUG_FLAG 1
 #include "Debugowanie.h"
 
 using namespace std;
@@ -35,13 +34,12 @@ void test_usuwanie_panstwa();
 void dodaj_panstwo(Kontynent&);
 void test_dodaj_pasmo();
 void pokaz_panstwa(Kontynent&);
-/* TODO: interfejs u¿ytkownika - co z wyswieltleniem panstw??
- * TODO: pasma_gorskie
+ /* TODO: pasma_gorskie
 
 */
 int main(void)
 {
-	_debug("Debugger dziala");
+	debug("Debugger dziala");
 	//test_usuwanie_panstwa();
 	glowny_program();
 	return 0;

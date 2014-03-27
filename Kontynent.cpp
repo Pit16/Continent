@@ -6,15 +6,16 @@
  */
 
 #include "Kontynent.h"
-#define _DEBUG_FLAG
+#include "Debugowanie.h"
 
 int Kontynent::liczba_kontynentow=0;
 
 Kontynent::Kontynent(string nazwa)
 {
-#ifdef _DEBUG_FLAG
-	cout<<"[tryb debug] konstruktor z parametrem kontynentu: "<<nazwa<<endl;
-#endif
+//#ifdef _DEBUG_FLAG
+//	cout<<"konstruktor z parametrem kontynentu: "<<nazwa<<endl;
+//#endif
+	debug("konstruktor z parametrem kontynentu: " + nazwa);
 	this->nazwa=nazwa;
 	this->powierzchnia=0;
 	this->liczba_panstw=0;
@@ -25,9 +26,10 @@ Kontynent::Kontynent(string nazwa)
 
 Kontynent::Kontynent(const Kontynent& k)
 {
-#ifdef _DEBUG_FLAG
-	cout<<"[tryb debug] konstruktor kopiujacy kontynentu: "<<k.nazwa<<endl;
-#endif
+//#ifdef _DEBUG_FLAG
+//	cout<<"konstruktor kopiujacy kontynentu: "<<k.nazwa<<endl;
+//#endif
+	debug("konstruktor kopiujacy kontynentu: " + nazwa);
 	this->nazwa=k.nazwa;
 	this->powierzchnia=k.powierzchnia;
 	this->liczba_panstw=k.liczba_panstw;
@@ -42,9 +44,10 @@ Kontynent::Kontynent(const Kontynent& k)
 
 Kontynent::~Kontynent()
 {
-#ifdef _DEBUG_FLAG
-	cout<<"[tryb debug] destruktor kontynentu: "<<nazwa<<endl;
-#endif
+//#ifdef _DEBUG_FLAG
+//	cout<<"destruktor kontynentu: "<<nazwa<<endl;
+//#endif
+	debug("destruktor kontynentu: " + nazwa);
 }
 
 string Kontynent::pobierz_nazwe()

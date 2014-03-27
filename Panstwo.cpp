@@ -6,12 +6,11 @@
  */
 
 #include "Panstwo.h"
-#define _DEBUG_FLAG
+#include "Debugowanie.h"
+
 Panstwo::Panstwo(string nazwa, int powierzchnia, int populacja)
 {
-#ifdef _DEBUG_FLAG
-	cout<<"[tryb debug] konstruktor z parametrem panstwa: "<<nazwa<<endl;
-#endif
+	debug("konstruktor z parametrem panstwa: " + nazwa);
 	this->nazwa=nazwa;
 	this->powierzchnia=powierzchnia;
 	this->populacja=populacja;
@@ -22,9 +21,7 @@ Panstwo::Panstwo(string nazwa, int powierzchnia, int populacja)
 
 Panstwo::Panstwo(const Panstwo& p)
 {
-#ifdef _DEBUG_FLAG
-	cout<<"[tryb debug] konstruktor kopiujacy panstwa: "<<p.nazwa<<endl;
-#endif
+	debug("konstruktor kopiujacy panstwa: " + p.nazwa);
 	this->nazwa=p.nazwa;
 	this->powierzchnia=p.powierzchnia;
 	this->populacja=p.populacja;
@@ -34,9 +31,7 @@ Panstwo::Panstwo(const Panstwo& p)
 }
 Panstwo::~Panstwo()
 {
-#ifdef _DEBUG_FLAG
-	cout<<"[tryb debug] destruktor panstwa: "<<nazwa<<endl;
-#endif
+	debug("destruktor panstwa: " + nazwa);
 }
 
 string Panstwo::pobierz_nazwe()

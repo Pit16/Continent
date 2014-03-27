@@ -23,8 +23,8 @@ void test_dodawania_panstw();
 void test_dodawania_kontynentu();
 void test_kopiowanie_kontynentu();
 void glowny_program();
+void test_zliczanie_kontynentow();
 /*TODO: operator przypisania dla kontynentu
- * TODO: zliczanie obiektów - static
  * TODO: interfejs u¿ytkownika
  * TODO: _DEBUG
  * TODO: operator strumieniowy
@@ -58,7 +58,7 @@ int main(void)
  		}
  	}
  	*/
-	test_operator_indeksowania();
+	test_zliczanie_kontynentow();
 
 	return 0;
 
@@ -182,6 +182,13 @@ void test_kopiowanie_kontynentu()
 	cout<<"=======koniec testu kopiowania kontynentu========="<<endl;
 }
 
+void test_zliczanie_kontynentow()
+{
+	Kontynent jeden("jeden");
+	Kontynent dwa("dwa");
+	Kontynent trzy(dwa);
+	cout<<"Liczba kontynentow: "<<Kontynent::pobierz_licznik()<<endl;
+}
 /*
  * Kontynent k1, k2;
  * k1.dodajPanstwo..

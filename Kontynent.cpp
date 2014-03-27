@@ -6,20 +6,16 @@
  */
 
 #include "Kontynent.h"
-
+int Kontynent::liczba_kontynentow=0;
 Kontynent::Kontynent(string nazwa)
 {
 	cout<<"Kontynent::Kontynent()"<<endl;
 	this->nazwa=nazwa;
 	this->powierzchnia=0;
 	this->liczba_panstw=0;
+	zwieksz_licznik();
 
-}
-Kontynent::~Kontynent()
-{
-	cout<<"Kontynent::~Kontynent"<<endl;
-    //if(liczba_panstw > 0)
-    	//delete []panstwa;
+
 }
 
 Kontynent::Kontynent(const Kontynent& k)
@@ -29,7 +25,14 @@ Kontynent::Kontynent(const Kontynent& k)
 	this->liczba_panstw=k.liczba_panstw;
 	if(liczba_panstw > 0)
 		this->panstwa=k.panstwa;
+	zwieksz_licznik();
+}
 
+Kontynent::~Kontynent()
+{
+	cout<<"Kontynent::~Kontynent"<<endl;
+    //if(liczba_panstw > 0)
+    	//delete []panstwa;
 }
 
 string Kontynent::pobierz_nazwe()
@@ -125,4 +128,14 @@ string Kontynent::operator[](int i)
 	}
 	else
 		return panstwa[i].pobierz_nazwe();
+}
+
+void Kontynent::zwieksz_licznik()
+{
+	liczba_kontynentow++;
+}
+
+int Kontynent::pobierz_licznik()
+{
+	return liczba_kontynentow;
 }

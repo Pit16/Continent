@@ -22,11 +22,11 @@ public:
 	void dodaj_panstwo(Panstwo& nowe_panstwo);
 	void dodaj_pasmo(Pasmo_gorskie& nowe_pasmo);
 	string operator[](int i);
-	void zwieksz_static();
-	int pokaz_static();
+	static int pobierz_licznik();
 	
 private:
 	void zwieksz_tablice();
+	static void zwieksz_licznik();
 	static int liczba_kontynentow;
 	string nazwa;
 	Panstwo* panstwa;

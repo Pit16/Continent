@@ -11,15 +11,21 @@ public:
 	Panstwo(string nazwa, int powierzchnia, int populacja);
 	Panstwo(const Panstwo& p);
 	~Panstwo();
+
+	//gettery
 	string pobierz_nazwe();
 	int pobierz_powierzchnie();
 	int pobierz_populacje();
 	string pobierz_stolice();
 	string pobierz_jezyk();
 	int pobierz_pkb();
+
+	//settery
 	void ustaw_stolice(string stolica);
 	void ustaw_jezyk(string jezyk);
 	void ustaw_pkb(int pkb);
+
+	//operatory
 	bool operator<(const Panstwo &p );
 	bool operator>(const Panstwo &p );
 	bool operator==(const Panstwo &p );

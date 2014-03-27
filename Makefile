@@ -4,7 +4,7 @@ OBJS =		Kontynent.cpp Panstwo.cpp Pasmo_gorskie.cpp
 
 LIBS =
 
-TARGET =	Continent.exe
+TARGET = Continent
 
 $(TARGET):	$(OBJS) main.cpp
 	$(CXX) -o $(TARGET) $(OBJS) main.cpp $(LIBS)
@@ -15,6 +15,6 @@ clean:
 	rm -f $(TARGET)
 	
 test: $(OBJS) testy.cpp
-	$(CXX) -o Testuj.exe $(OBJS) testy.cpp $(LIBS)
-	./Testuj.exe
+	$(CXX) -o Testuj $(OBJS) testy.cpp $(LIBS)
+	./Testuj
 	

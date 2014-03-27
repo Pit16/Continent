@@ -58,8 +58,7 @@ int main(void)
  		}
  	}
  	*/
-	test_zliczanie_kontynentow();
-
+	test_kopiowanie_kontynentu();
 	return 0;
 
 }

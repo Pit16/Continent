@@ -7,6 +7,7 @@
 
 #include "Kontynent.h"
 int Kontynent::liczba_kontynentow=0;
+
 Kontynent::Kontynent(string nazwa)
 {
 	cout<<"Kontynent::Kontynent()"<<endl;
@@ -14,7 +15,6 @@ Kontynent::Kontynent(string nazwa)
 	this->powierzchnia=0;
 	this->liczba_panstw=0;
 	zwieksz_licznik();
-
 
 }
 
@@ -24,7 +24,14 @@ Kontynent::Kontynent(const Kontynent& k)
 	this->powierzchnia=k.powierzchnia;
 	this->liczba_panstw=k.liczba_panstw;
 	if(liczba_panstw > 0)
-		this->panstwa=k.panstwa;
+	{
+		if(panstwa!=NULL)
+			delete []panstwa;
+
+		panstwa = new Panstwo[liczba_panstw];
+		for(int i=0; i<liczba_panstw; i++)
+			panstwa[i]=k.panstwa[i];
+	}
 	zwieksz_licznik();
 }
 
@@ -86,17 +93,13 @@ void Kontynent::dodaj_panstwo(Panstwo& nowe_panstwo)
 		 i--;
 		}
 	}
+	cout<<"koniec: dodaj panstwo"<<endl;
 }
 
 void Kontynent::dodaj_pasmo(Pasmo_gorskie& nowe_pasmo)
 {
 //	this->pasma_gorskie.push_back(nowe_pasmo);
 }
-
-/*void Kontynent::zwieksz_static()
-{
-	liczba_kontynentow++;
-}*/
 
 void Kontynent::zwieksz_tablice()
 {
@@ -110,7 +113,7 @@ void Kontynent::zwieksz_tablice()
         nowa_tablica[i] = panstwa[i];
     }
 
-    if(liczba_panstw > 1)
+    if(liczba_panstw >1)
     	delete []panstwa;
 
     panstwa = nowa_tablica;
@@ -138,4 +141,22 @@ void Kontynent::zwieksz_licznik()
 int Kontynent::pobierz_licznik()
 {
 	return liczba_kontynentow;
+}
+
+Kontynent& Kontynent::operator=(const Kontynent& k)
+{
+	this->nazwa=k.nazwa;
+	this->powierzchnia=k.powierzchnia;
+	this->liczba_panstw=k.liczba_panstw;
+	if(liczba_panstw > 0)
+	{
+		if(panstwa!=NULL)
+			delete []panstwa;
+
+		panstwa = new Panstwo[liczba_panstw];
+		for(int i=0; i<liczba_panstw; i++)
+			panstwa[i]=k.panstwa[i];
+	}
+
+	return *this;
 }

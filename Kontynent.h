@@ -22,6 +22,7 @@ public:
 	void dodaj_panstwo(Panstwo& nowe_panstwo);
 	void dodaj_pasmo(Pasmo_gorskie& nowe_pasmo);
 	string operator[](int i);
+	Kontynent& operator=(const Kontynent& k);
 	static int pobierz_licznik();
 	
 private:

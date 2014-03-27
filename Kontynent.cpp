@@ -14,6 +14,7 @@ Kontynent::Kontynent(string nazwa)
 	this->nazwa=nazwa;
 	this->powierzchnia=0;
 	this->liczba_panstw=0;
+	this->panstwa=NULL;
 	zwieksz_licznik();
 
 }
@@ -23,11 +24,8 @@ Kontynent::Kontynent(const Kontynent& k)
 	this->nazwa=k.nazwa;
 	this->powierzchnia=k.powierzchnia;
 	this->liczba_panstw=k.liczba_panstw;
-	if(liczba_panstw > 0)
+	if(liczba_panstw > 0 && k.panstwa!=NULL )
 	{
-		if(panstwa!=NULL)
-			delete []panstwa;
-
 		panstwa = new Panstwo[liczba_panstw];
 		for(int i=0; i<liczba_panstw; i++)
 			panstwa[i]=k.panstwa[i];

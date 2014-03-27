@@ -24,6 +24,7 @@ public:
 	string operator[](int i);
 	Kontynent& operator=(const Kontynent& k);
 	static int pobierz_licznik();
+	friend ostream & operator<< (ostream &, Kontynent &);
 	
 private:
 	void zwieksz_tablice();
@@ -36,5 +37,8 @@ private:
 	int liczba_panstw;
 
 };
-
+//ostream& operator<< (ostream& kontynent, Kontynent& k)
+//{
+	//kontynent<<p
+//}
 #endif /* KONTYNENT_H_ */

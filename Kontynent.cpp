@@ -47,14 +47,17 @@ string Kontynent::pobierz_nazwe()
 
 int Kontynent::pobierz_powierzchnie()
 {
-	cout<<"Powierzchnia kontynentu "<<pobierz_nazwe()<<" wynosi: ";
+	//cout<<"Powierzchnia kontynentu "<<pobierz_nazwe()<<" wynosi: ";
 	return powierzchnia;
 }
 
 string Kontynent::najwieksze_panstwo()
 {
-	cout<<"Najwieksze panstwo kontynentu "<<pobierz_nazwe()<<" to: ";
-	return panstwa[0].pobierz_nazwe();
+	//cout<<"Najwieksze panstwo kontynentu "<<pobierz_nazwe()<<" to: ";
+	if(panstwa!=NULL)
+		return panstwa[0].pobierz_nazwe();
+	else
+		return "nie ma panstw";
 }
 
 /*int Kontynent::srednie_zaludnienie()
@@ -78,6 +81,7 @@ void Kontynent::dodaj_panstwo(Panstwo& nowe_panstwo)
 	this->powierzchnia += nowe_panstwo.pobierz_powierzchnie();
 	if(liczba_panstw == 1)
 	{
+		cout<<"koniec: dodaj panstwo"<<endl;
 		return;
 	}
 	else
@@ -157,4 +161,20 @@ Kontynent& Kontynent::operator=(const Kontynent& k)
 	}
 
 	return *this;
+}
+
+int Kontynent::pobierz_liczbe_panstw()
+{
+	return this->liczba_panstw;
+}
+
+ostream& operator<< (ostream& strumien, Kontynent& kontynent)
+{
+	strumien<<"nazwa kontynentu: "<<kontynent.pobierz_nazwe()<<endl;
+	strumien<<"powierzchnia kontynentu wynosi: "<<kontynent.pobierz_powierzchnie()<<endl;
+	strumien<<"liczba panstw na tym kontynencie: "<<kontynent.pobierz_liczbe_panstw()<<endl;
+	for(int i=0; i<kontynent.pobierz_liczbe_panstw(); i++)
+		strumien<<"nazwa panstwa nr: "<<i<<" : "<<kontynent[i]<<endl;
+	strumien<<"nazwa najwiekszego panstwa: "<<kontynent.najwieksze_panstwo()<<endl;
+	return strumien;
 }

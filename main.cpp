@@ -24,10 +24,10 @@ void test_dodawania_kontynentu();
 void test_kopiowanie_kontynentu();
 void glowny_program();
 void test_zliczanie_kontynentow();
-/*TODO: operator przypisania dla kontynentu
- * TODO: interfejs u¿ytkownika
+void test_operator_strumieniowy_kontynent();
+void test_operator_przypisania_kontynent();
+/* TODO: interfejs u¿ytkownika
  * TODO: _DEBUG
- * TODO: operator strumieniowy
  * TODO: pasma_gorskie
 
 */
@@ -58,7 +58,9 @@ int main(void)
  		}
  	}
  	*/
-	test_kopiowanie_kontynentu();
+	//test_kopiowanie_kontynentu();
+	//test_operator_strumieniowy_kontynent();
+	test_operator_przypisania_kontynent();
 	return 0;
 
 }
@@ -188,6 +190,25 @@ void test_zliczanie_kontynentow()
 	Kontynent trzy(dwa);
 	cout<<"Liczba kontynentow: "<<Kontynent::pobierz_licznik()<<endl;
 }
+
+void test_operator_strumieniowy_kontynent()
+{
+	Kontynent dwa("Australia");
+	cout<<dwa;
+}
+
+void test_operator_przypisania_kontynent()
+{
+	Kontynent k1("Europa");
+	Panstwo anglia("Anglia", 90, 10);
+	k1.dodaj_panstwo(anglia);
+	Kontynent k2("Azja");
+	k2=k1;
+	cout<<k2;
+}
+
+
+
 /*
  * Kontynent k1, k2;
  * k1.dodajPanstwo..

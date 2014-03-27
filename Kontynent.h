@@ -8,6 +8,8 @@
 
 using namespace std;
 
+
+
 class Kontynent
 {
 public:
@@ -25,6 +27,7 @@ public:
 	Kontynent& operator=(const Kontynent& k);
 	static int pobierz_licznik();
 	friend ostream & operator<< (ostream &, Kontynent &);
+	int pobierz_liczbe_panstw();
 	
 private:
 	void zwieksz_tablice();
@@ -37,8 +40,7 @@ private:
 	int liczba_panstw;
 
 };
-//ostream& operator<< (ostream& kontynent, Kontynent& k)
-//{
-	//kontynent<<p
-//}
+
+ostream& operator<< (ostream& strumien, Kontynent& kontynent);
+
 #endif /* KONTYNENT_H_ */

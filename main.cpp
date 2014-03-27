@@ -11,6 +11,9 @@
 #include "Pasmo_gorskie.h"
 #include "Kontynent.h"
 
+#define _DEBUG_FLAG 1
+#include "Debugowanie.h"
+
 using namespace std;
 
 bool test_pobierz_nazwe_panstwa();
@@ -30,14 +33,15 @@ void test_srednie_zaludnienie();
 void zmiana_parametrow(Kontynent&);
 void test_usuwanie_panstwa();
 void dodaj_panstwo(Kontynent&);
-/* TODO: interfejs u¿ytkownika
+void test_dodaj_pasmo();
+/* TODO: interfejs u¿ytkownika - co z wyswieltleniem panstw??
  * TODO: _DEBUG
  * TODO: pasma_gorskie
 
 */
 int main(void)
 {
-
+	_debug("Debugger dziala");
 	//test_usuwanie_panstwa();
 	glowny_program();
 	return 0;
@@ -70,7 +74,7 @@ void glowny_program()
 	 		switch(komenda)
 	 		{
 	 		case 0: return;
-	 		case 1: cout<<kontynent; break;			//TODO: stworzyc jeden kontynent ktory ma wszystko
+	 		case 1: cout<<kontynent; break;
 	 		case 2:	zmiana_parametrow(kontynent); break;
 	 		case 3: dodaj_panstwo(kontynent); break;
 	 		case 4: cout<<kontynent.srednie_zaludnienie()<<endl; break;
@@ -94,7 +98,7 @@ void zmiana_parametrow(Kontynent& kontynent)
 	{
 		cout<<"WYBIERZ PANSTWO"<<endl;
 		cin>>indeks_panstwa;
-		if(indeks_panstwa<kontynent.pobierz_liczbe_panstw() && indeks_panstwa > 0)
+		if(indeks_panstwa<kontynent.pobierz_liczbe_panstw() && indeks_panstwa >= 0)
 			{
 			string nazwa = " ", stolica= " ", jezyk = " ";
 			int powierzchnia=0, populacja=0, pkb=0;
@@ -289,6 +293,16 @@ void test_usuwanie_panstwa()
 	cout<<europa<<endl;
 	europa.usun_panstwo(1);
 	cout<<europa;
+}
+
+void test_dodaj_pasmo()
+{
+	Pasmo_gorskie tatry("Tatry", 1300);
+	Pasmo_gorskie andy("Andy", 1800);
+	Kontynent europa("Europa");
+	//europa.dodaj_pasmo(tatry);
+	//europa.dodaj_pasmo(andy);
+
 }
 /*
  * Kontynent k1, k2;

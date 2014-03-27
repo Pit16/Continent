@@ -8,6 +8,7 @@ class Pasmo_gorskie
 {
 public:
 	Pasmo_gorskie(string nazwa, int srednia_wysokosc);
+	Pasmo_gorskie(const Pasmo_gorskie& pg);
 	~Pasmo_gorskie();
 	string pobierz_nazwe();
 	int pobierz_srednia_wysokosc();
@@ -18,7 +19,7 @@ public:
 	bool operator ==(const Pasmo_gorskie &g);
 private:
 	string nazwa;
-	int srednia_wyskosc;
+	int srednia_wysokosc;
 	string najwyzszy_szczyt;
 	int wysokosc_szczytu;
 

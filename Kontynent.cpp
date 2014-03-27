@@ -6,11 +6,15 @@
  */
 
 #include "Kontynent.h"
+#define _DEBUG_FLAG
+
 int Kontynent::liczba_kontynentow=0;
 
 Kontynent::Kontynent(string nazwa)
 {
-	//cout<<"Kontynent::Kontynent()"<<endl;
+#ifdef _DEBUG_FLAG
+	cout<<"[tryb debug] konstruktor z parametrem kontynentu: "<<nazwa<<endl;
+#endif
 	this->nazwa=nazwa;
 	this->powierzchnia=0;
 	this->liczba_panstw=0;
@@ -21,6 +25,9 @@ Kontynent::Kontynent(string nazwa)
 
 Kontynent::Kontynent(const Kontynent& k)
 {
+#ifdef _DEBUG_FLAG
+	cout<<"[tryb debug] konstruktor kopiujacy kontynentu: "<<k.nazwa<<endl;
+#endif
 	this->nazwa=k.nazwa;
 	this->powierzchnia=k.powierzchnia;
 	this->liczba_panstw=k.liczba_panstw;
@@ -35,9 +42,9 @@ Kontynent::Kontynent(const Kontynent& k)
 
 Kontynent::~Kontynent()
 {
-	//cout<<"Kontynent::~Kontynent"<<endl;
-    //if(liczba_panstw > 0)
-    	//delete []panstwa;
+#ifdef _DEBUG_FLAG
+	cout<<"[tryb debug] destruktor kontynentu: "<<nazwa<<endl;
+#endif
 }
 
 string Kontynent::pobierz_nazwe()
@@ -53,25 +60,26 @@ int Kontynent::pobierz_powierzchnie()
 
 string Kontynent::najwieksze_panstwo()
 {
-	//cout<<"Najwieksze panstwo kontynentu "<<pobierz_nazwe()<<" to: ";
+	//cout<<"Najwieksze panstwo kontynentu "<<pobierz_nazwe()<<" to: "<<endl;
 	if(panstwa!=NULL)
 		return panstwa[0].pobierz_nazwe();
 	else
 		return "nie ma panstw";
 }
 
-int Kontynent::srednie_zaludnienie()		//TODO: zrobic dzialajacego double
+int Kontynent::srednie_zaludnienie()
 {
 
 	int liczba_ludnosci=0;
 	if(liczba_panstw!=0)
 	{
-		cout<<"jestem w: srednie zaludnienie"<<endl;
+		//cout<<"jestem w: srednie zaludnienie"<<endl;
 		for(int i=0; i<liczba_panstw; i++)
 			liczba_ludnosci += panstwa[i].pobierz_populacje();
 		/*cout<<"liczba ludnosci: "<<liczba_ludnosci<<endl;
 		 * cout<<"powierzchnia: "<<pobierz_powierzchnie()<<endl;
 		 */
+		cout<<"srednie zaludnienie wynosi: ";
 		return (liczba_ludnosci/powierzchnia);
 	}
 	else
@@ -87,13 +95,13 @@ string Kontynent::najwyzsza_gora()
 
 void Kontynent::dodaj_panstwo(Panstwo& nowe_panstwo)
 {
-	cout<<"jestem w: dodaj_panstwo"<<endl;
+	//cout<<"jestem w: dodaj_panstwo"<<endl;
 	zwieksz_tablice();
 	panstwa[liczba_panstw-1]=nowe_panstwo;
 	this->powierzchnia += nowe_panstwo.pobierz_powierzchnie();
 	if(liczba_panstw == 1)
 	{
-		cout<<"koniec: dodaj panstwo"<<endl;
+		//cout<<"koniec: dodaj panstwo"<<endl;
 		return;
 	}
 	else
@@ -107,19 +115,51 @@ void Kontynent::dodaj_panstwo(Panstwo& nowe_panstwo)
 		 i--;
 		}
 	}
-	cout<<"koniec: dodaj panstwo"<<endl;
+	//cout<<"koniec: dodaj panstwo"<<endl;
 }
 
-void Kontynent::dodaj_pasmo(Pasmo_gorskie& nowe_pasmo)
+/*void Kontynent::dodaj_pasmo(Pasmo_gorskie& nowe_pasmo)
 {
-//	this->pasma_gorskie.push_back(nowe_pasmo);
+	//cout<<"jestem w: dodaj_pasmo"<<endl;
+	zwieksz_tablice();
+	pasma_gorskie[liczba_pasm-1]=nowe_pasmo;
+	if(liczba_pasm == 1)
+	{
+		//cout<<"koniec: dodaj pasmo"<<endl;
+		return;
+	}
+	else
+	{
+		int i=liczba_pasm - 1;
+		while(i>0 && pasma_gorskie[i]>pasma_gorskie[i-1])
+		{
+		 Pasmo_gorskie tymczasowe=pasma_gorskie[i];
+		 pasma_gorskie[i]=pasma_gorskie[i-1];
+		 pasma_gorskie[i-1]=tymczasowe;
+		 i--;
+		}
+	}
 }
+void Kontynent::zwieksz_pasma()
+{
+	liczba_pasm++;
+	Pasmo_gorskie* nowa_tablica = new Pasmo_gorskie[liczba_pasm];
+    for (int i = 0; i < liczba_pasm-1; i++)
+    {
+        nowa_tablica[i] = pasma_gorskie[i];
+    }
+
+    if(liczba_pasm >1)
+    	delete []pasma_gorskie;
+
+    pasma_gorskie = nowa_tablica;
+}*/
 
 void Kontynent::zwieksz_tablice()
 {
 	liczba_panstw++;
 
-    cout<<"jestem w: zwieksz_tablice"<<endl;
+    //cout<<"jestem w: zwieksz_tablice"<<endl;
     Panstwo* nowa_tablica = new Panstwo[liczba_panstw];
 
     for (int i = 0; i < liczba_panstw-1; i++)
@@ -131,7 +171,7 @@ void Kontynent::zwieksz_tablice()
     	delete []panstwa;
 
     panstwa = nowa_tablica;
-    cout<<"koniec: zwieksz_tablice"<<endl;
+    //cout<<"koniec: zwieksz_tablice"<<endl;
 
 }
 

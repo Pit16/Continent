@@ -29,16 +29,19 @@ public:
 	friend ostream & operator<< (ostream &, Kontynent &);
 	int pobierz_liczbe_panstw();
 	void usun_panstwo(int);
+	int pobierz_liczbe_pasm();
 	
 private:
 	void zwieksz_tablice();
+	void zwieksz_pasma();
 	static void zwieksz_licznik();
 	static int liczba_kontynentow;
 	string nazwa;
 	Panstwo* panstwa;
-	// Pasmo_gorskie* pasma_gorskie;
+	Pasmo_gorskie* pasma_gorskie;
 	int powierzchnia;
 	int liczba_panstw;
+	int liczba_pasm;
 
 };
 

@@ -6,11 +6,12 @@
  */
 
 #include "Panstwo.h"
-
+#define _DEBUG_FLAG
 Panstwo::Panstwo(string nazwa, int powierzchnia, int populacja)
 {
-
-	//cout<<"Panstwo::Panstwo() : "<<nazwa<<endl;
+#ifdef _DEBUG_FLAG
+	cout<<"[tryb debug] konstruktor z parametrem panstwa: "<<nazwa<<endl;
+#endif
 	this->nazwa=nazwa;
 	this->powierzchnia=powierzchnia;
 	this->populacja=populacja;
@@ -21,6 +22,9 @@ Panstwo::Panstwo(string nazwa, int powierzchnia, int populacja)
 
 Panstwo::Panstwo(const Panstwo& p)
 {
+#ifdef _DEBUG_FLAG
+	cout<<"[tryb debug] konstruktor kopiujacy panstwa: "<<p.nazwa<<endl;
+#endif
 	this->nazwa=p.nazwa;
 	this->powierzchnia=p.powierzchnia;
 	this->populacja=p.populacja;
@@ -30,7 +34,9 @@ Panstwo::Panstwo(const Panstwo& p)
 }
 Panstwo::~Panstwo()
 {
-	//cout<<"Panstwo::~Panstwo(void) : "<<nazwa<<endl;
+#ifdef _DEBUG_FLAG
+	cout<<"[tryb debug] destruktor panstwa: "<<nazwa<<endl;
+#endif
 }
 
 string Panstwo::pobierz_nazwe()
@@ -80,30 +86,30 @@ void Panstwo::ustaw_pkb(int pkb)
 
 bool Panstwo::operator<(const Panstwo& p1)
 {
-	cout<<"operator mniejszosci"<<endl;
-	cout<<this->powierzchnia<<" < "<<p1.powierzchnia<<endl;
+	//cout<<"operator mniejszosci"<<endl;
+	//cout<<this->powierzchnia<<" < "<<p1.powierzchnia<<endl;
 	return this->powierzchnia < p1.powierzchnia;
 }
 
 bool Panstwo::operator>(const Panstwo& p1)
 {
-	cout<<"operator wiekszosci"<<endl;
-	cout<<this->powierzchnia<<" > "<<p1.powierzchnia<<endl;
+	//cout<<"operator wiekszosci"<<endl;
+	//cout<<this->powierzchnia<<" > "<<p1.powierzchnia<<endl;
 	return this->powierzchnia > p1.powierzchnia;
 }
 
 bool Panstwo::operator !=(const Panstwo& p1)
 {
 
-	cout<<"operator nierownosci"<<endl;
-	cout<<this->powierzchnia<<" != "<<p1.powierzchnia<<endl;
+	//cout<<"operator nierownosci"<<endl;
+	//cout<<this->powierzchnia<<" != "<<p1.powierzchnia<<endl;
 	return this->powierzchnia != p1.powierzchnia;
 }
 
 bool Panstwo::operator ==(const Panstwo& p1)
 {
 
-	cout<<"operator rownosci"<<endl;
-	cout<<this->powierzchnia<<" == "<<p1.powierzchnia<<endl;
+	//cout<<"operator rownosci"<<endl;
+	//cout<<this->powierzchnia<<" == "<<p1.powierzchnia<<endl;
 	return this->powierzchnia == p1.powierzchnia;
 }

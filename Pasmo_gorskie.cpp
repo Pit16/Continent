@@ -9,16 +9,25 @@
 
 Pasmo_gorskie::Pasmo_gorskie(string nazwa, int srednia_wysokosc)
 {
-	cout<<"Pasmo_gorskie::Pasmo_gorskie()"<<endl;
+	//cout<<"Pasmo_gorskie::Pasmo_gorskie()"<<endl;
 	this->nazwa=nazwa;
-	this->srednia_wyskosc=srednia_wysokosc;
+	this->srednia_wysokosc=srednia_wysokosc;
 	this->najwyzszy_szczyt="";
 	this->wysokosc_szczytu=0;
 }
 
+Pasmo_gorskie::Pasmo_gorskie(const Pasmo_gorskie& pg)
+{
+	//cout<<"Pasmo_gorskie::Pasmo_gorskie()"<<endl;
+	this->nazwa=pg.nazwa;
+	this->srednia_wysokosc=pg.srednia_wysokosc;
+	this->najwyzszy_szczyt=pg.najwyzszy_szczyt;
+	this->wysokosc_szczytu=pg.wysokosc_szczytu;
+}
+
 Pasmo_gorskie::~Pasmo_gorskie()
 {
-	cout<<"Pasmo_gorskie::~Pasmo_gorskie()"<<endl;
+	//cout<<"Pasmo_gorskie::~Pasmo_gorskie()"<<endl;
 }
 
 
@@ -29,7 +38,7 @@ string Pasmo_gorskie::pobierz_nazwe()
 
 int Pasmo_gorskie::pobierz_srednia_wysokosc()
 {
-	return srednia_wyskosc;
+	return srednia_wysokosc;
 }
 
 string Pasmo_gorskie::pobierz_najwyzszy_szczyt()
@@ -52,7 +61,7 @@ void Pasmo_gorskie::ustaw_wysokosc(int wysokosc_szczytu)
 	this->wysokosc_szczytu=wysokosc_szczytu;
 }
 
-bool Pasmo_gorskie::operator ==(const Pasmo_gorskie &g)
+bool Pasmo_gorskie::operator ==(const Pasmo_gorskie &pg)
 {
-	//return this->srednia_wysokosc==g.srednia_wysokosc;
+	return this->srednia_wysokosc == pg.srednia_wysokosc;
 }

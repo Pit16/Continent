@@ -60,20 +60,25 @@ string Kontynent::najwieksze_panstwo()
 		return "nie ma panstw";
 }
 
-double Kontynent::srednie_zaludnienie()		//TODO: zrobic dzialajacego double
+int Kontynent::srednie_zaludnienie()		//TODO: zrobic dzialajacego double
 {
+
 	int liczba_ludnosci=0;
 	if(liczba_panstw!=0)
 	{
 		cout<<"jestem w: srednie zaludnienie"<<endl;
 		for(int i=0; i<liczba_panstw; i++)
 			liczba_ludnosci += panstwa[i].pobierz_populacje();
-		cout<<"liczba ludnosci: "<<liczba_ludnosci<<endl;
-		cout<<"powierzchnia: "<<pobierz_powierzchnie()<<endl;
-		return (double) (liczba_ludnosci/pobierz_powierzchnie());
+		/*cout<<"liczba ludnosci: "<<liczba_ludnosci<<endl;
+		 * cout<<"powierzchnia: "<<pobierz_powierzchnie()<<endl;
+		 */
+		return (liczba_ludnosci/powierzchnia);
 	}
 	else
+		{
+		cout<<"nie ma panstw - brak ludnosci";
 		return 0;
+		}
 }
 string Kontynent::najwyzsza_gora()
 {
@@ -132,7 +137,7 @@ void Kontynent::zwieksz_tablice()
 
 string Kontynent::operator[](int i)
 {
-	cout<<"operator indeksowania"<<endl;
+	//cout<<"operator indeksowania"<<endl;
 	if ( i>=liczba_panstw || i<0)
 	{
 		cout<<"przekroczona tablica"<<endl;

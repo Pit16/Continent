@@ -19,7 +19,7 @@ public:
 	string pobierz_nazwe();
 	int pobierz_powierzchnie();
 	string najwieksze_panstwo();
-	double srednie_zaludnienie();
+	int srednie_zaludnienie();
 	string najwyzsza_gora();
 	void dodaj_panstwo(Panstwo& nowe_panstwo);
 	void dodaj_pasmo(Pasmo_gorskie& nowe_pasmo);

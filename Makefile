@@ -12,9 +12,8 @@ $(TARGET):	$(OBJS) main.cpp
 all:	$(TARGET)
 
 clean:
-	rm -f $(TARGET)
-	
+	rm -f *.o $(TARGET)
+
 test: $(OBJS) testy.cpp
-	$(CXX) -o Testuj $(OBJS) testy.cpp $(LIBS)
+	$(CXX) -o Testuj $(OBJS) testy.cpp 
 	./Testuj
-	

@@ -248,3 +248,8 @@ void Kontynent::usun_panstwo(int indeks_panstwa)
 	panstwa=tymaczasowe;
 	liczba_panstw--;
 }
+Panstwo& Kontynent::pokaz_panstwo(int i)
+{
+	//Panstwo tymczasowe = panstwa[i];
+	return panstwa[i];
+}

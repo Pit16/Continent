@@ -34,8 +34,8 @@ void zmiana_parametrow(Kontynent&);
 void test_usuwanie_panstwa();
 void dodaj_panstwo(Kontynent&);
 void test_dodaj_pasmo();
+void pokaz_panstwa(Kontynent&);
 /* TODO: interfejs u¿ytkownika - co z wyswieltleniem panstw??
- * TODO: _DEBUG
  * TODO: pasma_gorskie
 
 */
@@ -69,7 +69,8 @@ void glowny_program()
 	 		cout<<"(1) Wyswietl aktualny stan obiektu"<<endl;
 	 		cout<<"(2) Zmiana parametru obiektu"<<endl;
 	 		cout<<"(3) Dodaj panstwo"<<endl;
-	 		cout<<"(4) Pokaz srednie zaludnienie"<<endl;				// to jest dodatkowa opcja, ktora wybralem
+	 		cout<<"(4) Pokaz srednie zaludnienie"<<endl; // to jest dodatkowa opcja, ktora wybralem
+	 		cout<<"(5) Pokaz szczegoly panstwa"<<endl;
 	 		cin>> komenda;
 	 		switch(komenda)
 	 		{
@@ -78,6 +79,7 @@ void glowny_program()
 	 		case 2:	zmiana_parametrow(kontynent); break;
 	 		case 3: dodaj_panstwo(kontynent); break;
 	 		case 4: cout<<kontynent.srednie_zaludnienie()<<endl; break;
+	 		case 5: pokaz_panstwa(kontynent); break;
 	 		default: cout<<"zla komenda"<<endl; break;
 	 		}
 	 	}
@@ -303,6 +305,12 @@ void test_dodaj_pasmo()
 	//europa.dodaj_pasmo(tatry);
 	//europa.dodaj_pasmo(andy);
 
+}
+
+void pokaz_panstwa(Kontynent& kontynent)
+{
+	for(int i=0; i<kontynent.pobierz_liczbe_panstw(); i++)
+		cout<<kontynent.pokaz_panstwo(i);
 }
 /*
  * Kontynent k1, k2;

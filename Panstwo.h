@@ -24,6 +24,8 @@ public:
 	bool operator>(const Panstwo &p );
 	bool operator==(const Panstwo &p );
 	bool operator!=(const Panstwo &p );
+	Panstwo& operator=(const Panstwo& p);
+	friend ostream & operator<< (ostream &, Panstwo &);
 
 private:
 	string nazwa;
@@ -33,5 +35,5 @@ private:
 	string jezyk;
 	int pkb;
 };
-
+ostream& operator<< (ostream& strumien, Panstwo& panstwo);
 #endif /* PANSTWO_H_ */

@@ -113,3 +113,27 @@ bool Panstwo::operator ==(const Panstwo& p1)
 	//cout<<this->powierzchnia<<" == "<<p1.powierzchnia<<endl;
 	return this->powierzchnia == p1.powierzchnia;
 }
+
+ostream& operator<< (ostream& strumien, Panstwo& panstwo)
+{
+	strumien<<"nazwa panstwa: "<<panstwo.pobierz_nazwe()<<endl;
+	strumien<<"powierzchnia panstwa wynosi: "<<panstwo.pobierz_powierzchnie()<<endl;
+	strumien<<"populacja panstwa wynosi: "<<panstwo.pobierz_populacje()<<endl;
+	strumien<<"stolica panstwa jest: "<<panstwo.pobierz_stolice()<<endl;
+	strumien<<"jezyk panstwa to: "<<panstwo.pobierz_jezyk()<<endl;
+	strumien<<"pkb panstwa wynosi: "<<panstwo.pobierz_pkb()<<endl;
+
+	return strumien;
+}
+
+Panstwo& Panstwo::operator=(const Panstwo& p)
+{
+	this->nazwa=p.nazwa;
+	this->powierzchnia=p.powierzchnia;
+	this->populacja=p.populacja;
+	this->stolica=p.stolica;
+	this->jezyk=p.jezyk;
+	this->pkb=p.pkb;
+
+	return *this;
+}

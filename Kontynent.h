@@ -30,6 +30,7 @@ public:
 	int pobierz_liczbe_panstw();
 	void usun_panstwo(int);
 	int pobierz_liczbe_pasm();
+	Panstwo& pokaz_panstwo(int i);
 	
 private:
 	void zwieksz_tablice();

@@ -26,6 +26,7 @@ void glowny_program();
 void test_zliczanie_kontynentow();
 void test_operator_strumieniowy_kontynent();
 void test_operator_przypisania_kontynent();
+void test_srednie_zaludnienie();
 /* TODO: interfejs u¿ytkownika
  * TODO: _DEBUG
  * TODO: pasma_gorskie
@@ -60,7 +61,8 @@ int main(void)
  	*/
 	//test_kopiowanie_kontynentu();
 	//test_operator_strumieniowy_kontynent();
-	test_operator_przypisania_kontynent();
+	//test_operator_przypisania_kontynent();
+	test_srednie_zaludnienie();
 	return 0;
 
 }
@@ -207,7 +209,15 @@ void test_operator_przypisania_kontynent()
 	cout<<k2;
 }
 
-
+void test_srednie_zaludnienie()
+{
+	Panstwo andora("Andora", 100, 1056);
+	Panstwo anglia("Anglia", 90, 500);
+	Kontynent europa("Europa");
+	europa.dodaj_panstwo(andora);
+	europa.dodaj_panstwo(anglia);
+	cout<<"srednie zaludnienie wynosi: "<<europa.srednie_zaludnienie()<<endl;
+}
 
 /*
  * Kontynent k1, k2;

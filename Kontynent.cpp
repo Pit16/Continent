@@ -60,14 +60,21 @@ string Kontynent::najwieksze_panstwo()
 		return "nie ma panstw";
 }
 
-/*int Kontynent::srednie_zaludnienie()
+double Kontynent::srednie_zaludnienie()		//TODO: zrobic dzialajacego double
 {
 	int liczba_ludnosci=0;
-	for(unsigned i=0; i<panstwa.size(); i++) //TODO: co sie stanie gdy wartosci sa rowne 0
-		liczba_ludnosci += panstwa[i].pobierz_populacje();
-	return liczba_ludnosci/powierzchnia;
-}*/
-
+	if(liczba_panstw!=0)
+	{
+		cout<<"jestem w: srednie zaludnienie"<<endl;
+		for(int i=0; i<liczba_panstw; i++)
+			liczba_ludnosci += panstwa[i].pobierz_populacje();
+		cout<<"liczba ludnosci: "<<liczba_ludnosci<<endl;
+		cout<<"powierzchnia: "<<pobierz_powierzchnie()<<endl;
+		return (double) (liczba_ludnosci/pobierz_powierzchnie());
+	}
+	else
+		return 0;
+}
 string Kontynent::najwyzsza_gora()
 {
 	return 0;		//TODO: pokazac najwyzsza_gora();

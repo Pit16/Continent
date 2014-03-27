@@ -9,6 +9,7 @@ class Panstwo
 public: 
 	Panstwo(){}
 	Panstwo(string nazwa, int powierzchnia, int populacja);
+	Panstwo(const Panstwo& p);
 	~Panstwo();
 	string pobierz_nazwe();
 	int pobierz_powierzchnie();

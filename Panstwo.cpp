@@ -19,6 +19,15 @@ Panstwo::Panstwo(string nazwa, int powierzchnia, int populacja)
 	this->pkb=0;
 }
 
+Panstwo::Panstwo(const Panstwo& p)
+{
+	this->nazwa=p.nazwa;
+	this->powierzchnia=p.powierzchnia;
+	this->populacja=p.populacja;
+	this->stolica=p.stolica;
+	this->jezyk=p.jezyk;
+	this->pkb=p.pkb;
+}
 Panstwo::~Panstwo()
 {
 	cout<<"Panstwo::~Panstwo(void) : "<<nazwa<<endl;

@@ -7,7 +7,14 @@
 #include "Pasmo_gorskie.h"
 
 using namespace std;
-
+/*
+ * TODO: zmiana tablic na vectory
+ * TODO: przeniesc wyzej powierzchnie
+ * TODO: przeniesienie nazwy
+ * TODO: zmiana metod dla przeniesionych zmiennych
+ * TODO: maja byc tylko panstwa
+ * TODO: zrobic dziedziczenie po Obszarze
+ */
 
 
 class Kontynent

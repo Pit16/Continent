@@ -20,13 +20,16 @@ using namespace std;
 class Obszar
 {
 public:
-	Obszar(int powierzchnia, int populacja);
+	Obszar() {}
+	Obszar(string nazwa, int powierzchnia, int populacja);
 	Obszar(const Obszar& o);
 	~Obszar();
 
+	string pobierz_nazwe();
 	int pobierz_populacje();
 	int pobierz_powierzchnie();
 protected:
+	string nazwa;
 	int powierzchnia;
 	int populacja;
 

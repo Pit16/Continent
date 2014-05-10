@@ -7,12 +7,12 @@
 
 #include "Obszar.h"
 
-Obszar::Obszar(int powierzchnia, int populacja)
+Obszar::Obszar(string nazwa, int powierzchnia, int populacja)
 {
 
-	//debug("konstruktor z parametrem kontynentu: " + nazwa);
-	this->powierzchnia=0;
-	this->populacja=0;
+	this->nazwa=nazwa;
+	this->powierzchnia=powierzchnia;
+	this->populacja=populacja;
 
 }
 
@@ -29,6 +29,10 @@ Obszar::~Obszar()
 	//debug("destruktor kontynentu: " + nazwa);
 }
 
+string Obszar::pobierz_nazwe()
+{
+	return nazwa;
+}
 
 int Obszar::pobierz_powierzchnie()
 {

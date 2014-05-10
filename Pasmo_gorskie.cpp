@@ -56,6 +56,11 @@ bool Pasmo_gorskie::operator ==(const Pasmo_gorskie &pg)
 	return this->srednia_wysokosc == pg.srednia_wysokosc;
 }
 
+bool Pasmo_gorskie::operator<(const Pasmo_gorskie& p1)
+{
+	return this->srednia_wysokosc < p1.srednia_wysokosc;
+}
+
 ostream& operator<< (ostream& strumien, Pasmo_gorskie& pasmo_gorskie)
 {
 	strumien<<"nazwa pasma: "<<pasmo_gorskie.pobierz_nazwe()<<endl;

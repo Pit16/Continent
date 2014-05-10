@@ -21,6 +21,7 @@ public:
 
 	//operatory
 	bool operator ==(const Pasmo_gorskie &g);
+	bool operator<(const Pasmo_gorskie &p);
 	friend ostream & operator<< (ostream &, Pasmo_gorskie &);
 
 private:

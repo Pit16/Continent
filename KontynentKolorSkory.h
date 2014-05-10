@@ -25,6 +25,8 @@ public:
 
 	friend ostream & operator<< (ostream &, KontynentKolorSkory &);
 
+	virtual string pokaz_ceche_charakterystyczna();
+
 private:
 	string kolor_skory;
 

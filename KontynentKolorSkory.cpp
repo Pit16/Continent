@@ -34,3 +34,9 @@ ostream& operator<< (ostream& strumien, KontynentKolorSkory& kontynentKolorSkory
 
 	return strumien;
 }
+
+ string KontynentKolorSkory::pokaz_ceche_charakterystyczna()
+{
+	return "dominujacy kolor skory to: " + this->kolor_skory;
+}
+

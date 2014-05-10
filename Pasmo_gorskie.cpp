@@ -6,6 +6,7 @@
  */
 
 #include "Pasmo_gorskie.h"
+#include "Debugowanie.h"
 
 Pasmo_gorskie::Pasmo_gorskie(string nazwa, int srednia_wysokosc)
 {
@@ -13,7 +14,7 @@ Pasmo_gorskie::Pasmo_gorskie(string nazwa, int srednia_wysokosc)
 	this->nazwa=nazwa;
 	this->srednia_wysokosc=srednia_wysokosc;
 	this->najwyzszy_szczyt="";
-	this->wysokosc_szczytu=0;
+	debug("utworzono nowe pasmo " + nazwa);
 }
 
 Pasmo_gorskie::Pasmo_gorskie(const Pasmo_gorskie& pg)
@@ -22,7 +23,6 @@ Pasmo_gorskie::Pasmo_gorskie(const Pasmo_gorskie& pg)
 	this->nazwa=pg.nazwa;
 	this->srednia_wysokosc=pg.srednia_wysokosc;
 	this->najwyzszy_szczyt=pg.najwyzszy_szczyt;
-	this->wysokosc_szczytu=pg.wysokosc_szczytu;
 }
 
 Pasmo_gorskie::~Pasmo_gorskie()
@@ -46,22 +46,22 @@ string Pasmo_gorskie::pobierz_najwyzszy_szczyt()
 	return najwyzszy_szczyt;
 }
 
-int Pasmo_gorskie::pobierz_wysokosc_najwyzszy_szczyt()
-{
-	return wysokosc_szczytu;
-}
-
 void Pasmo_gorskie::ustaw_najwyzszy_szczyt(string najwyzszy_szczyt)
 {
 	this->najwyzszy_szczyt=najwyzszy_szczyt;
-}
-
-void Pasmo_gorskie::ustaw_wysokosc(int wysokosc_szczytu)
-{
-	this->wysokosc_szczytu=wysokosc_szczytu;
 }
 
 bool Pasmo_gorskie::operator ==(const Pasmo_gorskie &pg)
 {
 	return this->srednia_wysokosc == pg.srednia_wysokosc;
 }
+
+ostream& operator<< (ostream& strumien, Pasmo_gorskie& pasmo_gorskie)
+{
+	strumien<<"nazwa pasma: "<<pasmo_gorskie.pobierz_nazwe()<<endl;
+	strumien<<"srednia wysokosc wynosi: "<<pasmo_gorskie.pobierz_srednia_wysokosc()<<endl;
+	strumien<<"najwyzszy szczyt to: "<<pasmo_gorskie.pobierz_najwyzszy_szczyt()<<endl;
+
+	return strumien;
+}
+

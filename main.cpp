@@ -7,8 +7,7 @@
 //============================================================================
 
 #include <iostream>
-#include "Panstwo.h"
-#include "Pasmo_gorskie.h"
+#include "KontynentZPasmemGorskim.h"
 #include "Kontynent.h"
 
 #include "Debugowanie.h"
@@ -19,14 +18,20 @@ void glowny_program();
 void zmiana_parametrow(Kontynent&);
 void dodaj_panstwo(Kontynent&);
 void pokaz_panstwa(Kontynent&);
- /* TODO: pasma_gorskie
-
-*/
+ /*TODO: pasma gorskie
+  *
+  */
 int main(void)
 {
 	debug("Debugger dziala");
 	//test_usuwanie_panstwa();
-	glowny_program();
+	//glowny_program();
+	KontynentZPasmemGorskim kontynentZpasmemGorskim("Australia");
+	Pasmo_gorskie* tatry = new Pasmo_gorskie ("Tatry", 1300);
+	Pasmo_gorskie* andy = new Pasmo_gorskie ("Andy", 1800);
+	kontynentZpasmemGorskim.dodaj_pasmo(tatry);
+	kontynentZpasmemGorskim.dodaj_pasmo(andy);
+	cout<<kontynentZpasmemGorskim;
 	return 0;
 
 }
@@ -34,10 +39,10 @@ int main(void)
 void glowny_program()
 {
 	Kontynent kontynent("Afryka");
-	Panstwo niemcy("Niemcy", 100, 1600);
-	Panstwo usa("Usa", 200, 6100);
-	Panstwo chiny("Chiny", 200, 10000);
-	Panstwo indie("Indie", 100, 30000);
+	Panstwo* niemcy = new Panstwo("Niemcy", 100, 1600);
+	Panstwo* usa = new Panstwo("Usa", 200, 6100);
+	Panstwo* chiny = new Panstwo("Chiny", 200, 10000);
+	Panstwo* indie = new Panstwo("Indie", 100, 30000);
 	kontynent.dodaj_panstwo(niemcy);
 	kontynent.dodaj_panstwo(usa);
 	kontynent.dodaj_panstwo(chiny);
@@ -101,10 +106,10 @@ void zmiana_parametrow(Kontynent& kontynent)
 			cin>>jezyk;
 			cout<<"Podaj nowe pkb dla tego panstwa: "<<endl;
 			cin>>pkb;
-			Panstwo nowe_panstwo(nazwa, powierzchnia, populacja);
-			nowe_panstwo.ustaw_stolice(stolica);
-			nowe_panstwo.ustaw_jezyk(jezyk);
-			nowe_panstwo.ustaw_pkb(pkb);
+			Panstwo* nowe_panstwo = new Panstwo(nazwa, powierzchnia, populacja);
+			nowe_panstwo->ustaw_stolice(stolica);
+			nowe_panstwo->ustaw_jezyk(jezyk);
+			nowe_panstwo->ustaw_pkb(pkb);
 			kontynent.dodaj_panstwo(nowe_panstwo);
 			break;
 			}
@@ -131,10 +136,10 @@ void dodaj_panstwo(Kontynent& kontynent)
 	cin>>jezyk;
 	cout<<"Podaj nowe pkb dla tego panstwa: "<<endl;
 	cin>>pkb;
-	Panstwo nowe_panstwo(nazwa, powierzchnia, populacja);
-	nowe_panstwo.ustaw_stolice(stolica);
-	nowe_panstwo.ustaw_jezyk(jezyk);
-	nowe_panstwo.ustaw_pkb(pkb);
+	Panstwo* nowe_panstwo = new Panstwo(nazwa, powierzchnia, populacja);
+	nowe_panstwo->ustaw_stolice(stolica);
+	nowe_panstwo->ustaw_jezyk(jezyk);
+	nowe_panstwo->ustaw_pkb(pkb);
 	kontynent.dodaj_panstwo(nowe_panstwo);
 }
 
@@ -142,5 +147,5 @@ void dodaj_panstwo(Kontynent& kontynent)
 void pokaz_panstwa(Kontynent& kontynent)
 {
 	for(int i=0; i<kontynent.pobierz_liczbe_panstw(); i++)
-		cout<<kontynent.pokaz_panstwo(i);
+		cout<<*kontynent.pokaz_panstwo(i);
 }

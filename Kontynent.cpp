@@ -12,23 +12,16 @@ int Kontynent::liczba_kontynentow=0;
 
 Kontynent::Kontynent(string nazwa)
 {
-//#ifdef _DEBUG_FLAG
-//	cout<<"konstruktor z parametrem kontynentu: "<<nazwa<<endl;
-//#endif
 	debug("konstruktor z parametrem kontynentu: " + nazwa);
 	this->nazwa=nazwa;
 	this->powierzchnia=0;
 	this->liczba_panstw=0;
-	//this->panstwa=NULL;
 	zwieksz_licznik();
 
 }
 
 Kontynent::Kontynent(const Kontynent& k)
 {
-//#ifdef _DEBUG_FLAG
-//	cout<<"konstruktor kopiujacy kontynentu: "<<k.nazwa<<endl;
-//#endif
 	debug("konstruktor kopiujacy kontynentu: " + nazwa);
 	this->nazwa=k.nazwa;
 	this->powierzchnia=k.powierzchnia;
@@ -42,18 +35,22 @@ Kontynent::Kontynent(const Kontynent& k)
 
 Kontynent::~Kontynent()
 {
-//#ifdef _DEBUG_FLAG
-//	cout<<"destruktor kontynentu: "<<nazwa<<endl;
-//#endif
 	debug("destruktor kontynentu: " + nazwa);
 }
 
 
-string Kontynent::najwieksze_panstwo()		//TODO: poprawic, przeszukanie tablicy
+string Kontynent::najwieksze_panstwo()
 {
-	//cout<<"Najwieksze panstwo kontynentu "<<pobierz_nazwe()<<" to: "<<endl;
+	int licznik=0;
 	if(panstwa.size()!=0)
-		return panstwa[0]->pobierz_nazwe();
+	{
+		for(int i=1; i<pobierz_liczbe_panstw(); i++)
+		{
+			if(panstwa[licznik]<panstwa[i])
+			licznik=i;
+		}
+	return panstwa[licznik]->pobierz_nazwe();
+	}
 	else
 		return "nie ma panstw";
 }
@@ -142,6 +139,10 @@ void Kontynent::usun_panstwo(int indeks_panstwa)
 }
 Panstwo* Kontynent::pokaz_panstwo(int i)
 {
-	//Panstwo tymczasowe = panstwa[i];
 	return panstwa[i];
 }
+string Kontynent::pokaz_ceche_charakterystyczna()
+{
+	return "najwieksze panstwo to: " + this->najwieksze_panstwo();
+}
+

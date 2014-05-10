@@ -8,10 +8,6 @@
 #include "Obszar.h"
 
 using namespace std;
-/*
- * TODO: zmiana tablic na vectory
- */
-
 
 class Kontynent: public Obszar
 {
@@ -34,6 +30,8 @@ public:
 	void dodaj_panstwo(Panstwo* nowe_panstwo);
 	void usun_panstwo(int);
 	
+	virtual string pokaz_ceche_charakterystyczna();
+
 private:
 	static int liczba_kontynentow;
 	vector<Panstwo*> panstwa;

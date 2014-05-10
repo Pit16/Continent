@@ -19,7 +19,7 @@ Kontynent::Kontynent(string nazwa)
 	this->nazwa=nazwa;
 	this->powierzchnia=0;
 	this->liczba_panstw=0;
-	this->panstwa=NULL;
+	//this->panstwa=NULL;
 	zwieksz_licznik();
 
 }
@@ -33,11 +33,9 @@ Kontynent::Kontynent(const Kontynent& k)
 	this->nazwa=k.nazwa;
 	this->powierzchnia=k.powierzchnia;
 	this->liczba_panstw=k.liczba_panstw;
-	if(liczba_panstw > 0 && k.panstwa!=NULL )
+	if(liczba_panstw > 0 && panstwa.size()>0 )
 	{
-		panstwa = new Panstwo[liczba_panstw];
-		for(int i=0; i<liczba_panstw; i++)
-			panstwa[i]=k.panstwa[i];
+			panstwa=k.panstwa;
 	}
 	zwieksz_licznik();
 }
@@ -50,22 +48,12 @@ Kontynent::~Kontynent()
 	debug("destruktor kontynentu: " + nazwa);
 }
 
-string Kontynent::pobierz_nazwe()
-{
-	return nazwa;
-}
 
-int Kontynent::pobierz_powierzchnie()
-{
-	//cout<<"Powierzchnia kontynentu "<<pobierz_nazwe()<<" wynosi: ";
-	return powierzchnia;
-}
-
-string Kontynent::najwieksze_panstwo()
+string Kontynent::najwieksze_panstwo()		//TODO: poprawic, przeszukanie tablicy
 {
 	//cout<<"Najwieksze panstwo kontynentu "<<pobierz_nazwe()<<" to: "<<endl;
-	if(panstwa!=NULL)
-		return panstwa[0].pobierz_nazwe();
+	if(panstwa.size()!=0)
+		return panstwa[0]->pobierz_nazwe();
 	else
 		return "nie ma panstw";
 }
@@ -76,14 +64,9 @@ int Kontynent::srednie_zaludnienie()
 	int liczba_ludnosci=0;
 	if(liczba_panstw!=0)
 	{
-		//cout<<"jestem w: srednie zaludnienie"<<endl;
-		for(int i=0; i<liczba_panstw; i++)
-			liczba_ludnosci += panstwa[i].pobierz_populacje();
-		/*cout<<"liczba ludnosci: "<<liczba_ludnosci<<endl;
-		 * cout<<"powierzchnia: "<<pobierz_powierzchnie()<<endl;
-		 */
-		cout<<"srednie zaludnienie wynosi: ";
-		return (liczba_ludnosci/powierzchnia);
+		for(unsigned i=0; i<panstwa.size(); i++) //TODO: czy dobrze dzia³a gdy wartosci sa rowne 0
+		liczba_ludnosci += panstwa[i]->pobierz_populacje();
+		return liczba_ludnosci/powierzchnia;
 	}
 	else
 		{
@@ -91,92 +74,13 @@ int Kontynent::srednie_zaludnienie()
 		return 0;
 		}
 }
-string Kontynent::najwyzsza_gora()
-{
-	return 0;		//TODO: pokazac najwyzsza_gora();
-}
 
-void Kontynent::dodaj_panstwo(Panstwo& nowe_panstwo)
-{
-	//cout<<"jestem w: dodaj_panstwo"<<endl;
-	zwieksz_tablice();
-	panstwa[liczba_panstw-1]=nowe_panstwo;
-	this->powierzchnia += nowe_panstwo.pobierz_powierzchnie();
-	if(liczba_panstw == 1)
-	{
-		//cout<<"koniec: dodaj panstwo"<<endl;
-		return;
-	}
-	else
-	{
-		int i=liczba_panstw - 1;
-		while(i>0 && panstwa[i]>panstwa[i-1])
-		{
-		 Panstwo tymczasowe=panstwa[i];
-		 panstwa[i]=panstwa[i-1];
-		 panstwa[i-1]=tymczasowe;
-		 i--;
-		}
-	}
-	//cout<<"koniec: dodaj panstwo"<<endl;
-}
-
-/*void Kontynent::dodaj_pasmo(Pasmo_gorskie& nowe_pasmo)
-{
-	//cout<<"jestem w: dodaj_pasmo"<<endl;
-	zwieksz_tablice();
-	pasma_gorskie[liczba_pasm-1]=nowe_pasmo;
-	if(liczba_pasm == 1)
-	{
-		//cout<<"koniec: dodaj pasmo"<<endl;
-		return;
-	}
-	else
-	{
-		int i=liczba_pasm - 1;
-		while(i>0 && pasma_gorskie[i]>pasma_gorskie[i-1])
-		{
-		 Pasmo_gorskie tymczasowe=pasma_gorskie[i];
-		 pasma_gorskie[i]=pasma_gorskie[i-1];
-		 pasma_gorskie[i-1]=tymczasowe;
-		 i--;
-		}
-	}
-}
-void Kontynent::zwieksz_pasma()
-{
-	liczba_pasm++;
-	Pasmo_gorskie* nowa_tablica = new Pasmo_gorskie[liczba_pasm];
-    for (int i = 0; i < liczba_pasm-1; i++)
-    {
-        nowa_tablica[i] = pasma_gorskie[i];
-    }
-
-    if(liczba_pasm >1)
-    	delete []pasma_gorskie;
-
-    pasma_gorskie = nowa_tablica;
-}*/
-
-void Kontynent::zwieksz_tablice()
-{
-	liczba_panstw++;
-
-    //cout<<"jestem w: zwieksz_tablice"<<endl;
-    Panstwo* nowa_tablica = new Panstwo[liczba_panstw];
-
-    for (int i = 0; i < liczba_panstw-1; i++)
-    {
-        nowa_tablica[i] = panstwa[i];
-    }
-
-    if(liczba_panstw >1)
-    	delete []panstwa;
-
-    panstwa = nowa_tablica;
-    //cout<<"koniec: zwieksz_tablice"<<endl;
-
-}
+void Kontynent::dodaj_panstwo(Panstwo* nowe_panstwo)
+ {
+ 	this->panstwa.push_back(nowe_panstwo);
+ 	this->powierzchnia += nowe_panstwo->pobierz_powierzchnie();
+ 	liczba_panstw++;
+ }
 
 string Kontynent::operator[](int i)
 {
@@ -187,7 +91,7 @@ string Kontynent::operator[](int i)
 		return "zly indeks";
 	}
 	else
-		return panstwa[i].pobierz_nazwe();
+		return panstwa[i]->pobierz_nazwe();
 }
 
 void Kontynent::zwieksz_licznik()
@@ -205,14 +109,9 @@ Kontynent& Kontynent::operator=(const Kontynent& k)
 	this->nazwa=k.nazwa;
 	this->powierzchnia=k.powierzchnia;
 	this->liczba_panstw=k.liczba_panstw;
-	if(liczba_panstw > 0)
+	if(panstwa.size() > 0)
 	{
-		if(panstwa!=NULL)
-			delete []panstwa;
-
-		panstwa = new Panstwo[liczba_panstw];
-		for(int i=0; i<liczba_panstw; i++)
-			panstwa[i]=k.panstwa[i];
+			panstwa=k.panstwa;
 	}
 
 	return *this;
@@ -238,20 +137,10 @@ void Kontynent::usun_panstwo(int indeks_panstwa)
 {
 	if(indeks_panstwa<0 || indeks_panstwa>liczba_panstw-1)
 		return;
-
-	Panstwo* tymaczasowe = new Panstwo[liczba_panstw-1];
-	for(int i=0; i<indeks_panstwa; i++)
-		tymaczasowe[i] = panstwa[i];
-	for(int i=indeks_panstwa; i<liczba_panstw-1; i++)
-	{
-		tymaczasowe[i] = panstwa[i+1];
-	}
-	powierzchnia-=panstwa[indeks_panstwa].pobierz_powierzchnie();
-	delete []panstwa;
-	panstwa=tymaczasowe;
+	panstwa.erase (panstwa.begin()+indeks_panstwa);
 	liczba_panstw--;
 }
-Panstwo& Kontynent::pokaz_panstwo(int i)
+Panstwo* Kontynent::pokaz_panstwo(int i)
 {
 	//Panstwo tymczasowe = panstwa[i];
 	return panstwa[i];

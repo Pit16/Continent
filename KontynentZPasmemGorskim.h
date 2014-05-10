@@ -32,6 +32,7 @@ public:
 	void dodaj_pasmo(Pasmo_gorskie* nowe_pasmo);
 	void usun_pasmo(int);
 
+	virtual string pokaz_ceche_charakterystyczna();
 private:
 	vector<Pasmo_gorskie*> pasma;
 	int liczba_pasm;

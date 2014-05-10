@@ -53,10 +53,17 @@ Pasmo_gorskie* KontynentZPasmemGorskim::pokaz_pasmo(int i)
 	return pasma[i];
 }
 
-string KontynentZPasmemGorskim::najwyzsze_pasmo()	//TODO: zrobic to
+string KontynentZPasmemGorskim::najwyzsze_pasmo()
 {
-	return "cos";
+	int licznik=0;
+	for(int i=1; i<pobierz_liczbe_pasm(); i++)
+	{
+		if(pasma[licznik]<pasma[i])
+			licznik=i;
+	}
+	return pasma[licznik]->pobierz_nazwe();
 }
+
 ostream& operator<< (ostream& strumien, KontynentZPasmemGorskim& kontynentZPasmemGorskim)
 {
 	strumien<<"nazwa kontynentu: "<<kontynentZPasmemGorskim.pobierz_nazwe()<<endl;
@@ -66,5 +73,10 @@ ostream& operator<< (ostream& strumien, KontynentZPasmemGorskim& kontynentZPasme
 	strumien<<"nazwa najwyzszego pasma: "<<kontynentZPasmemGorskim.najwyzsze_pasmo()<<endl;
 
 	return strumien;
+}
+
+string KontynentZPasmemGorskim::pokaz_ceche_charakterystyczna()
+{
+	return "najwyzsze pasmo to: " + najwyzsze_pasmo();
 }
 

@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include "KontynentZPasmemGorskim.h"
+#include "KontynentKolorSkory.h"
 #include "Kontynent.h"
 
 #include "Debugowanie.h"
@@ -18,20 +19,31 @@ void glowny_program();
 void zmiana_parametrow(Kontynent&);
 void dodaj_panstwo(Kontynent&);
 void pokaz_panstwa(Kontynent&);
- /*TODO: pasma gorskie
-  *
-  */
+
 int main(void)
 {
 	debug("Debugger dziala");
 	//test_usuwanie_panstwa();
 	//glowny_program();
-	KontynentZPasmemGorskim kontynentZpasmemGorskim("Australia");
-	Pasmo_gorskie* tatry = new Pasmo_gorskie ("Tatry", 1300);
-	Pasmo_gorskie* andy = new Pasmo_gorskie ("Andy", 1800);
-	kontynentZpasmemGorskim.dodaj_pasmo(tatry);
-	kontynentZpasmemGorskim.dodaj_pasmo(andy);
-	cout<<kontynentZpasmemGorskim;
+	KontynentZPasmemGorskim* kontynentZpasmemGorskim = new KontynentZPasmemGorskim("Australia");
+	Pasmo_gorskie* tatry = new Pasmo_gorskie("Tatry", 1300);
+	Pasmo_gorskie* andy = new Pasmo_gorskie("Andy", 1800);
+	kontynentZpasmemGorskim->dodaj_pasmo(tatry);
+	kontynentZpasmemGorskim->dodaj_pasmo(andy);
+	KontynentKolorSkory* kontynentKolorSkory = new KontynentKolorSkory("Afryka", "czarny");
+	Kontynent* kontynent = new Kontynent("Azja");
+	Panstwo* niemcy = new Panstwo("Niemcy", 100, 1600);
+	Panstwo* usa = new Panstwo("Usa", 200, 6100);
+	kontynent->dodaj_panstwo(niemcy);
+	kontynent->dodaj_panstwo(usa);
+	vector <Obszar*> kontynenty;
+	kontynenty.push_back(kontynentKolorSkory);
+	kontynenty.push_back(kontynentZpasmemGorskim);
+	kontynenty.push_back(kontynent);
+	for(int i=0; i<kontynenty.size(); i++)
+		cout<<kontynenty[i]->pokaz_ceche_charakterystyczna()<<endl;
+
+
 	return 0;
 
 }

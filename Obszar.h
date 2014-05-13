@@ -13,21 +13,23 @@
 
 using namespace std;
 
-/*
- * TODO: zrobic testy
- */
-
+/// Klasa abstrakcyjna
 class Obszar
 {
 public:
 	Obszar() {}
+	/// Konstruktor z parametrami
 	Obszar(string nazwa, int powierzchnia, int populacja);
+	///Konstruktor kopiujacy
 	Obszar(const Obszar& o);
+	///Destruktor
 	~Obszar();
 
 	string pobierz_nazwe();
 	int pobierz_populacje();
 	int pobierz_powierzchnie();
+
+	virtual string pokaz_ceche_charakterystyczna()=0;
 protected:
 	string nazwa;
 	int powierzchnia;

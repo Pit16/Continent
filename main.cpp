@@ -7,6 +7,7 @@
 //============================================================================
 
 #include <iostream>
+#include <fstream>
 #include "KontynentZPasmemGorskim.h"
 #include "KontynentKolorSkory.h"
 #include "Kontynent.h"
@@ -19,6 +20,7 @@ void glowny_program();
 void zmiana_parametrow(Kontynent&);
 void dodaj_panstwo(Kontynent&);
 void pokaz_panstwa(Kontynent&);
+
 
 int main(void)
 {
@@ -36,6 +38,10 @@ int main(void)
 	Panstwo* usa = new Panstwo("Usa", 200, 6100);
 	kontynent->dodaj_panstwo(niemcy);
 	kontynent->dodaj_panstwo(usa);
+
+	ofstream plik("panstwa.txt");
+
+	niemcy->zapisz_do_pliku(plik);
 	vector <Obszar*> kontynenty;
 	kontynenty.push_back(kontynentKolorSkory);
 	kontynenty.push_back(kontynentZpasmemGorskim);

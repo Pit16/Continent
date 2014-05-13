@@ -2,6 +2,7 @@
 #define PANSTWO_H_
 #include <iostream>
 #include <string>
+#include <fstream>
 
 using namespace std;
 class Panstwo
@@ -32,6 +33,8 @@ public:
 	bool operator!=(const Panstwo &p );
 	Panstwo& operator=(const Panstwo& p);
 	friend ostream & operator<< (ostream &, Panstwo &);
+
+	void zapisz_do_pliku(ofstream&);
 
 private:
 	string nazwa;

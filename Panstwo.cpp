@@ -132,3 +132,14 @@ Panstwo& Panstwo::operator=(const Panstwo& p)
 
 	return *this;
 }
+
+void Panstwo::zapisz_do_pliku(ofstream& plik)
+{
+	if(plik)
+	{
+		plik<<nazwa<<" "<<powierzchnia<<" "<<populacja<<endl;
+	}
+	else
+		debug("Blad w zapisie panstwa do pliku");
+}
+

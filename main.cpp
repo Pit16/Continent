@@ -34,14 +34,14 @@ int main(void)
 	kontynentZpasmemGorskim->dodaj_pasmo(andy);
 	KontynentKolorSkory* kontynentKolorSkory = new KontynentKolorSkory("Afryka", "czarny");
 	Kontynent* kontynent = new Kontynent("Azja");
-	Panstwo* niemcy = new Panstwo("Niemcy", 100, 1600);
 	Panstwo* usa = new Panstwo("Usa", 200, 6100);
-	kontynentZpasmemGorskim->dodaj_panstwo(niemcy);
 	kontynent->dodaj_panstwo(usa);
 
-	ofstream plik("kontynent.txt");
+	Panstwo* austria = new Panstwo("Austria", 500, 500);
+	ifstream plik("panstwa.txt");
+	austria->odczyt_z_pliku(plik);
+	cout<<*austria;
 
-	kontynent->zapisz_do_pliku(plik);
 
 	vector <Obszar*> kontynenty;
 	kontynenty.push_back(kontynentKolorSkory);

@@ -80,3 +80,22 @@ string KontynentZPasmemGorskim::pokaz_ceche_charakterystyczna()
 	return "najwyzsze pasmo to: " + najwyzsze_pasmo();
 }
 
+void KontynentZPasmemGorskim::zapisz_do_pliku(ofstream& plik)
+{
+	if(plik)
+	{
+		plik<<nazwa<<" "<<"2"<<endl;
+		for(int i=0; i<liczba_panstw; i++)
+		{
+			panstwa[i]->zapisz_do_pliku(plik);
+		}
+		for(int i=0; i<liczba_pasm;i++)
+		{
+			pasma[i]->zapisz_do_pliku(plik);
+		}
+
+	}
+	else
+		debug("Blad w zapisie kontynentuZpasmemGorskim do pliku");
+}
+

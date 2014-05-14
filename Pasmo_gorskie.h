@@ -2,6 +2,7 @@
 #define PASMO_GORSKIE_H_
 #include <iostream>
 #include <string>
+#include <fstream>
 
 using namespace std;
 class Pasmo_gorskie
@@ -24,6 +25,7 @@ public:
 	bool operator<(const Pasmo_gorskie &p);
 	friend ostream & operator<< (ostream &, Pasmo_gorskie &);
 
+	void zapisz_do_pliku(ofstream&);
 private:
 	string nazwa;
 	int srednia_wysokosc;

@@ -36,7 +36,7 @@ int main(void)
 	Kontynent* kontynent = new Kontynent("Azja");
 	Panstwo* niemcy = new Panstwo("Niemcy", 100, 1600);
 	Panstwo* usa = new Panstwo("Usa", 200, 6100);
-	kontynent->dodaj_panstwo(niemcy);
+	kontynentZpasmemGorskim->dodaj_panstwo(niemcy);
 	kontynent->dodaj_panstwo(usa);
 
 	ofstream plik("kontynent.txt");

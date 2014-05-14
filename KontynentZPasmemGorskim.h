@@ -33,6 +33,7 @@ public:
 	void usun_pasmo(int);
 
 	virtual string pokaz_ceche_charakterystyczna();
+	void zapisz_do_pliku(ofstream&);
 private:
 	vector<Pasmo_gorskie*> pasma;
 	int liczba_pasm;

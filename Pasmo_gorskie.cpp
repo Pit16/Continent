@@ -70,3 +70,13 @@ ostream& operator<< (ostream& strumien, Pasmo_gorskie& pasmo_gorskie)
 	return strumien;
 }
 
+void Pasmo_gorskie::zapisz_do_pliku(ofstream& plik)
+{
+	if(plik)
+	{
+		plik<<nazwa<<" "<<srednia_wysokosc<<" "<<najwyzszy_szczyt<<endl;
+	}
+	else
+		debug("Blad w zapisie pasma do pliku");
+}
+

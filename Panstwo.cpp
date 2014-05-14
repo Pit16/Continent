@@ -133,11 +133,11 @@ Panstwo& Panstwo::operator=(const Panstwo& p)
 	return *this;
 }
 
-void Panstwo::zapisz_do_pliku(ofstream& plik)	//TODO: dodac zapisywanie wszystkich danych
+void Panstwo::zapisz_do_pliku(ofstream& plik)
 {
 	if(plik)
 	{
-		plik<<nazwa<<" "<<powierzchnia<<" "<<populacja<<endl;
+		plik<<nazwa<<" "<<powierzchnia<<" "<<populacja<<" "<<stolica<<" "<<jezyk<<" "<<pkb<<endl;
 	}
 	else
 		debug("Blad w zapisie panstwa do pliku");

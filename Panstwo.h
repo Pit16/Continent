@@ -47,6 +47,7 @@ public:
 	friend ostream & operator<< (ostream &, Panstwo &);
 
 	void zapisz_do_pliku(ofstream&);
+	//TODO: odczyt z pliku, argument (ifstream&plik)
 
 private:
 	string nazwa;

@@ -37,19 +37,23 @@ int main(void)
 	Panstwo* usa = new Panstwo("Usa", 200, 6100);
 	kontynent->dodaj_panstwo(usa);
 
-	Panstwo* austria = new Panstwo("Austria", 500, 500);
+	/*Panstwo* austria = new Panstwo("Austria", 500, 500);
 	ifstream plik("panstwa.txt");
 	austria->odczyt_z_pliku(plik);
 	cout<<*austria;
-
-
+	*/
+	Kontynent* kontynent_odczyt = new Kontynent("Do.odczytu");
+	ifstream plik("kontynent.txt");
+	kontynent_odczyt->odczyt_z_pliku(plik);
+	cout<<*kontynent_odczyt;
+/*
 	vector <Obszar*> kontynenty;
 	kontynenty.push_back(kontynentKolorSkory);
 	kontynenty.push_back(kontynentZpasmemGorskim);
 	kontynenty.push_back(kontynent);
 	for(int i=0; i<kontynenty.size(); i++)
 		cout<<kontynenty[i]->pokaz_ceche_charakterystyczna()<<endl;
-
+	*/
 
 	return 0;
 

@@ -7,6 +7,7 @@
 
 #include "Kontynent.h"
 #include "Debugowanie.h"
+#include <sstream>
 
 int Kontynent::liczba_kontynentow=0;
 
@@ -159,4 +160,37 @@ void Kontynent::zapisz_do_pliku(ofstream& plik)
 	else
 		debug("Blad w zapisie kontynentu do pliku");
 }
+
+void Kontynent::odczyt_z_pliku(ifstream& plik)
+{
+	if(plik)
+	{
+	//	plik>>nazwa;
+	//	string typ;
+	//	plik>>typ;
+		string linia;
+		getline(plik, linia);
+		stringstream strumien(linia);
+		strumien >> nazwa;
+
+		while(1)
+		{
+			string line;
+			getline(plik,line);
+			stringstream linia(line);
+			if(line[0]=='#')
+			{
+				break;
+			}
+			if(line == "")
+				continue;
+			Panstwo* nowe_panstwo= new Panstwo("puste ", 0, 0);
+			nowe_panstwo->odczyt_z_pliku(linia);
+			this->dodaj_panstwo(nowe_panstwo);
+		}
+	}
+	else
+		debug("Blad w odczycie kontynentu z pliku");
+}
+
 

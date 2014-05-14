@@ -34,6 +34,7 @@ public:
 	virtual string pokaz_ceche_charakterystyczna();
 
 	void zapisz_do_pliku(ofstream&);
+	void odczyt_z_pliku(ifstream&);
 protected:
 	static int liczba_kontynentow;
 	vector<Panstwo*> panstwa;

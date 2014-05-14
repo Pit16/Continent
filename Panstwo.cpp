@@ -143,17 +143,22 @@ void Panstwo::zapisz_do_pliku(ofstream& plik)
 		debug("Blad w zapisie panstwa do pliku");
 }
 
-void Panstwo::odczyt_z_pliku(ifstream& plik)
+void Panstwo::odczyt_z_pliku(istream& plik)
 {
 	if(plik)
 	{
 		plik>>this->nazwa;
 		plik>>this->powierzchnia;
 		plik>>this->populacja;
-		plik>>this->stolica;
-		plik>>this->jezyk;
-		plik>>this->pkb;
+
 	}
 	else
 		debug("Blad w odczycie panstwa z pliku");
+}
+
+void Panstwo::odczyt_ze_strumienia(istream& stream)
+{
+	stream>>this->nazwa;
+	stream>>this->powierzchnia;
+	stream>>this->populacja;
 }

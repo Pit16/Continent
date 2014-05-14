@@ -47,7 +47,8 @@ public:
 	friend ostream & operator<< (ostream &, Panstwo &);
 
 	void zapisz_do_pliku(ofstream&);
-	void odczyt_z_pliku(ifstream& plik);
+	void odczyt_z_pliku(istream& plik);
+	void odczyt_ze_strumienia(istream& stream);
 
 private:
 	string nazwa;

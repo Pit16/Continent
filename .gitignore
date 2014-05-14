@@ -12,3 +12,6 @@
 *.la
 *.a
 /Default
+
+#Executives
+*.exe

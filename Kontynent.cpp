@@ -61,7 +61,7 @@ int Kontynent::srednie_zaludnienie()
 	int liczba_ludnosci=0;
 	if(liczba_panstw!=0)
 	{
-		for(unsigned i=0; i<panstwa.size(); i++) //TODO: czy dobrze dzia³a gdy wartosci sa rowne 0
+		for(unsigned i=0; i<panstwa.size(); i++)
 		liczba_ludnosci += panstwa[i]->pobierz_populacje();
 		return liczba_ludnosci/powierzchnia;
 	}
@@ -144,5 +144,19 @@ Panstwo* Kontynent::pokaz_panstwo(int i)
 string Kontynent::pokaz_ceche_charakterystyczna()
 {
 	return "najwieksze panstwo to: " + this->najwieksze_panstwo();
+}
+
+void Kontynent::zapisz_do_pliku(ofstream& plik)
+{
+	if(plik)
+	{
+		plik<<nazwa<<" "<<"1"<<endl;
+		for(int i=0; i<liczba_panstw;i++)
+		{
+			panstwa[i]->zapisz_do_pliku(plik);
+		}
+	}
+	else
+		debug("Blad w zapisie kontynentu do pliku");
 }
 

@@ -133,7 +133,7 @@ Panstwo& Panstwo::operator=(const Panstwo& p)
 	return *this;
 }
 
-void Panstwo::zapisz_do_pliku(ofstream& plik)
+void Panstwo::zapisz_do_pliku(ofstream& plik)	//TODO: dodac zapisywanie wszystkich danych
 {
 	if(plik)
 	{

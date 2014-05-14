@@ -5,15 +5,27 @@
 #include <fstream>
 
 using namespace std;
+/// Klasa implementujaca
 class Panstwo
 {
 public: 
+	/// Konstruktor domyslny
 	Panstwo(){}
+	/// Konstruktor z parametrami
+	/**
+	 * umozliwia utorzenie panstwa o konkretnej nazwie, powierzchni i populacji
+	 \param nazwa
+	 \param powierzchnia
+	 \param populacja
+	 */
 	Panstwo(string nazwa, int powierzchnia, int populacja);
+	///Konstruktor kopiujacy
 	Panstwo(const Panstwo& p);
+	///Destruktor
 	~Panstwo();
 
 	//gettery
+	///Funkcja zwraca nazwe panstwa
 	string pobierz_nazwe();
 	int pobierz_powierzchnie();
 	int pobierz_populacje();

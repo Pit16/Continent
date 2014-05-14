@@ -4,11 +4,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 #include "Panstwo.h"
 #include "Obszar.h"
 
 using namespace std;
-
+/// Klasa
 class Kontynent: public Obszar
 {
 public:
@@ -31,6 +32,8 @@ public:
 	void usun_panstwo(int);
 	
 	virtual string pokaz_ceche_charakterystyczna();
+
+	void zapisz_do_pliku(ofstream&);
 
 private:
 	static int liczba_kontynentow;

@@ -39,9 +39,10 @@ int main(void)
 	kontynent->dodaj_panstwo(niemcy);
 	kontynent->dodaj_panstwo(usa);
 
-	ofstream plik("panstwa.txt");
+	ofstream plik("kontynent.txt");
 
-	niemcy->zapisz_do_pliku(plik);
+	kontynent->zapisz_do_pliku(plik);
+
 	vector <Obszar*> kontynenty;
 	kontynenty.push_back(kontynentKolorSkory);
 	kontynenty.push_back(kontynentZpasmemGorskim);

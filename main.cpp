@@ -26,42 +26,8 @@ int main(void)
 {
 	debug("Debugger dziala");
 	//test_usuwanie_panstwa();
-	//glowny_program();
-	KontynentZPasmemGorskim* kontynentZpasmemGorskim = new KontynentZPasmemGorskim("Australia");
-	Pasmo_gorskie* tatry = new Pasmo_gorskie("Tatry", 1300);
-	Pasmo_gorskie* andy = new Pasmo_gorskie("Andy", 1800);
-	kontynentZpasmemGorskim->dodaj_pasmo(tatry);
-	kontynentZpasmemGorskim->dodaj_pasmo(andy);
-	KontynentKolorSkory* kontynentKolorSkory = new KontynentKolorSkory("Afryka", "czarny");
-	Kontynent* kontynent = new Kontynent("Azja");
-	Panstwo* usa = new Panstwo("Usa", 200, 6100);
-	kontynentKolorSkory->dodaj_panstwo(usa);
+	glowny_program();
 
-	/*Panstwo* austria = new Panstwo("Austria", 500, 500);
-	ifstream plik("panstwa.txt");
-	austria->odczyt_z_pliku(plik);
-	cout<<*austria;
-
-	KontynentZPasmemGorskim* kontynent_odczyt = new KontynentZPasmemGorskim("Do.odczytu");
-	ifstream plik("kontynentzpasmem.txt");
-	kontynent_odczyt->odczyt_z_pliku(plik);
-	cout<<*kontynent_odczyt;
-
-	ofstream plik("kontynentKolorSkory.txt");
-	kontynentKolorSkory->zapisz_do_pliku(plik);
-	 */
-	KontynentKolorSkory* kontynent_odczyt = new KontynentKolorSkory("Azja", "zolty");
-	ifstream plik("kontynentKolorSkory.txt");
-	kontynent_odczyt->odczyt_z_pliku(plik);
-	cout<<*kontynent_odczyt;
-/*
-	vector <Obszar*> kontynenty;
-	kontynenty.push_back(kontynentKolorSkory);
-	kontynenty.push_back(kontynentZpasmemGorskim);
-	kontynenty.push_back(kontynent);
-	for(int i=0; i<kontynenty.size(); i++)
-		cout<<kontynenty[i]->pokaz_ceche_charakterystyczna()<<endl;
-	*/
 
 	return 0;
 
@@ -69,15 +35,39 @@ int main(void)
 
 void glowny_program()
 {
-	Kontynent kontynent("Afryka");
-	Panstwo* niemcy = new Panstwo("Niemcy", 100, 1600);
-	Panstwo* usa = new Panstwo("Usa", 200, 6100);
-	Panstwo* chiny = new Panstwo("Chiny", 200, 10000);
-	Panstwo* indie = new Panstwo("Indie", 100, 30000);
-	kontynent.dodaj_panstwo(niemcy);
-	kontynent.dodaj_panstwo(usa);
-	kontynent.dodaj_panstwo(chiny);
-	kontynent.dodaj_panstwo(indie);
+	Panstwo* niemcy = new Panstwo("Niemcy", 100, 200);
+	Panstwo* usa = new Panstwo("Usa", 200, 600);
+	Panstwo* chiny = new Panstwo("Chiny", 200, 100);
+	Panstwo* indie = new Panstwo("Indie", 100, 300);
+
+	Kontynent* kontynent = new Kontynent("Afryka");
+	kontynent->dodaj_panstwo(niemcy);
+	kontynent->dodaj_panstwo(usa);
+	kontynent->dodaj_panstwo(chiny);
+	kontynent->dodaj_panstwo(indie);
+
+	KontynentZPasmemGorskim* kontynentZpasmemGorskim = new KontynentZPasmemGorskim("Australia");
+	kontynentZpasmemGorskim->dodaj_panstwo(niemcy);
+	kontynentZpasmemGorskim->dodaj_panstwo(usa);
+	kontynentZpasmemGorskim->dodaj_panstwo(chiny);
+	kontynentZpasmemGorskim->dodaj_panstwo(indie);
+	Pasmo_gorskie* tatry = new Pasmo_gorskie("Tatry", 1300);
+	Pasmo_gorskie* andy = new Pasmo_gorskie("Andy", 1800);
+	Pasmo_gorskie* karpaty = new Pasmo_gorskie("Karpaty", 1700);
+	kontynentZpasmemGorskim->dodaj_pasmo(tatry);
+	kontynentZpasmemGorskim->dodaj_pasmo(andy);
+	kontynentZpasmemGorskim->dodaj_pasmo(karpaty);
+
+	KontynentKolorSkory* kontynentKolorSkory = new KontynentKolorSkory("Afryka", "czarny");
+	kontynentKolorSkory->dodaj_panstwo(niemcy);
+	kontynentKolorSkory->dodaj_panstwo(usa);
+	kontynentKolorSkory->dodaj_panstwo(chiny);
+	kontynentKolorSkory->dodaj_panstwo(indie);
+
+	vector <Obszar*> kontynenty;
+	kontynenty.push_back(kontynent);
+	kontynenty.push_back(kontynentZpasmemGorskim);
+	kontynenty.push_back(kontynentKolorSkory);
 
 	int komenda = 0;
 	 	while(1)
@@ -85,20 +75,75 @@ void glowny_program()
 	 		cout<<endl;
 	 		cout<<"======== MENU PROGRAMU ========"<<endl;
 	 		cout<<"(0) Wyjscie z programu"<<endl;
-	 		cout<<"(1) Wyswietl aktualny stan obiektu"<<endl;
+	 		cout<<"(1) Wyswietl aktualny stan obiektow"<<endl;
 	 		cout<<"(2) Zmiana parametru obiektu"<<endl;
-	 		cout<<"(3) Dodaj panstwo"<<endl;
+	 		cout<<"(3) Dodaj panstwo do kontynentu"<<endl;
 	 		cout<<"(4) Pokaz srednie zaludnienie"<<endl; // to jest dodatkowa opcja, ktora wybralem
-	 		cout<<"(5) Pokaz szczegoly panstwa"<<endl;
+	 		cout<<"(5) Pokaz szczegoly panstw kontynentu"<<endl;
+	 		cout<<"(6) Wyswietl cechy charakterystyczne obszarow" <<endl;
+	 		cout<<"(7) Wczytaj z plikow dane dla kontynentow" <<endl;
+	 		cout<<"(8) Zapisz do plikow dane kontynentow"<<endl;
 	 		cin>> komenda;
 	 		switch(komenda)
 	 		{
 	 		case 0: return;
-	 		case 1: cout<<kontynent; break;
-	 		case 2:	zmiana_parametrow(kontynent); break;
-	 		case 3: dodaj_panstwo(kontynent); break;
-	 		case 4: cout<<kontynent.srednie_zaludnienie()<<endl; break;
-	 		case 5: pokaz_panstwa(kontynent); break;
+	 		case 1:
+			{
+				cout << "\nZwykly kontynent: \n" << *kontynent; 
+				cout << "\nKontynent z pasmem gorskim: \n" << *kontynentZpasmemGorskim;
+				cout << "\nKontynent z kolorem skory: \n" << *kontynentKolorSkory;
+				break;
+			}
+	 		case 2:	zmiana_parametrow(*kontynent); break;
+	 		case 3:
+			{
+				cout << "Wybierz kontynent, do ktorego chcesz dodac: " << endl;
+				cout << "(1) Kontynent zwykly" << endl;
+				cout << "(2) Kontynent z pasmem" << endl;
+				cout << "(3) Kontynent z kolorem skory" << endl;
+				int komenda;
+				cin >> komenda;
+				Kontynent* wybrany_kontynent = NULL;
+				switch(komenda)
+				{
+				case 1: wybrany_kontynent = kontynent; break;
+				case 2: wybrany_kontynent = kontynentZpasmemGorskim; break;
+				case 3: wybrany_kontynent = kontynentKolorSkory; break;
+				default: "zla komenda"; break;
+				}
+				if(wybrany_kontynent != NULL)
+				{
+					dodaj_panstwo(*wybrany_kontynent); 
+				}
+				break;
+			}
+	 		case 4: cout<<kontynent->srednie_zaludnienie()<<endl; break;
+	 		case 5: pokaz_panstwa(*kontynent); break;
+	 		case 6:
+	 		{
+				for(int i=0; i<kontynenty.size(); i++)
+					cout<<kontynenty[i]->pokaz_ceche_charakterystyczna()<<endl;
+				break;
+	 		}
+	 		case 7:
+	 		{
+	 			ifstream plik1("kontynent.txt");
+	 			kontynent->odczyt_z_pliku(plik1);
+	 			ifstream plik2("kontynentzpasmem.txt");
+	 			kontynentZpasmemGorskim->odczyt_z_pliku(plik2);
+	 			ifstream plik3("kontynentKolorSkory.txt");
+	 			kontynentKolorSkory->odczyt_z_pliku(plik3);
+	 			break;
+	 		}	 		case 8:
+	 		{
+	 			ofstream plik1("kontynent.txt");
+	 			kontynenty[0]->zapisz_do_pliku(plik1);
+	 			ofstream plik2("kontynentzpasmem.txt");
+	 			kontynenty[1]->zapisz_do_pliku(plik2);
+	 			ofstream plik3("kontynentKolorSkory.txt");
+	 			kontynenty[2]->zapisz_do_pliku(plik3);
+				break;
+	 		}
 	 		default: cout<<"zla komenda"<<endl; break;
 	 		}
 	 	}

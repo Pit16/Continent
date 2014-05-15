@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -30,6 +31,7 @@ public:
 	int pobierz_powierzchnie();
 
 	virtual string pokaz_ceche_charakterystyczna()=0;
+	virtual void zapisz_do_pliku(ofstream&) = 0;
 protected:
 	string nazwa;
 	int powierzchnia;

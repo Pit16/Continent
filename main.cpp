@@ -11,6 +11,7 @@
 #include "KontynentZPasmemGorskim.h"
 #include "KontynentKolorSkory.h"
 #include "Kontynent.h"
+#include "testy.h"
 
 #include "Debugowanie.h"
 

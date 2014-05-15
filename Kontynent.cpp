@@ -156,6 +156,7 @@ void Kontynent::zapisz_do_pliku(ofstream& plik)
 		{
 			panstwa[i]->zapisz_do_pliku(plik);
 		}
+		plik<<"#";
 	}
 	else
 		debug("Blad w zapisie kontynentu do pliku");
@@ -170,6 +171,8 @@ void Kontynent::odczyt_z_pliku(ifstream& plik)
 		stringstream strumien(linia);
 		strumien >> nazwa;
 
+		panstwa.clear();
+		liczba_panstw = 0;
 		while(1)
 		{
 			string line;

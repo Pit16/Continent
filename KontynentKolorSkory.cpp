@@ -75,6 +75,8 @@ ostream& operator<< (ostream& strumien, KontynentKolorSkory& kontynentKolorSkory
  		stringstream strumien(linia);
  		strumien >> nazwa;
 
+		panstwa.clear();
+		liczba_panstw = 0;
  		while(1)
  		{
  			string line;

@@ -100,7 +100,7 @@ void KontynentZPasmemGorskim::zapisz_do_pliku(ofstream& plik)
 		{
 			pasma[i]->zapisz_do_pliku(plik);
 		}
-
+		plik<<"#";
 	}
 	else
 		debug("Blad w zapisie kontynentuZpasmemGorskim do pliku");
@@ -115,6 +115,10 @@ void KontynentZPasmemGorskim::odczyt_z_pliku(ifstream& plik)
 		stringstream strumien(linia);
 		strumien >> nazwa;
 
+		panstwa.clear();
+		liczba_panstw = 0;
+		pasma.clear();
+		liczba_pasm = 0;
 		while(1)
 		{
 			string line;

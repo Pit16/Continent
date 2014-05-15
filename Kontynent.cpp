@@ -47,7 +47,7 @@ string Kontynent::najwieksze_panstwo()
 	{
 		for(int i=1; i<pobierz_liczbe_panstw(); i++)
 		{
-			if(panstwa[licznik]<panstwa[i])
+			if(*panstwa[licznik]<*panstwa[i])
 			licznik=i;
 		}
 	return panstwa[licznik]->pobierz_nazwe();

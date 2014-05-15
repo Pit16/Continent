@@ -59,8 +59,9 @@ string KontynentZPasmemGorskim::najwyzsze_pasmo()
 	int licznik=0;
 	for(int i=1; i<pobierz_liczbe_pasm(); i++)
 	{
-		if(pasma[licznik]<pasma[i])
+		if(*pasma[licznik]<*pasma[i]) {
 			licznik=i;
+		}
 	}
 	return pasma[licznik]->pobierz_nazwe();
 }

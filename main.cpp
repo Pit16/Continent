@@ -35,15 +35,23 @@ int main(void)
 	KontynentKolorSkory* kontynentKolorSkory = new KontynentKolorSkory("Afryka", "czarny");
 	Kontynent* kontynent = new Kontynent("Azja");
 	Panstwo* usa = new Panstwo("Usa", 200, 6100);
-	kontynent->dodaj_panstwo(usa);
+	kontynentKolorSkory->dodaj_panstwo(usa);
 
 	/*Panstwo* austria = new Panstwo("Austria", 500, 500);
 	ifstream plik("panstwa.txt");
 	austria->odczyt_z_pliku(plik);
 	cout<<*austria;
-	*/
+
 	KontynentZPasmemGorskim* kontynent_odczyt = new KontynentZPasmemGorskim("Do.odczytu");
 	ifstream plik("kontynentzpasmem.txt");
+	kontynent_odczyt->odczyt_z_pliku(plik);
+	cout<<*kontynent_odczyt;
+
+	ofstream plik("kontynentKolorSkory.txt");
+	kontynentKolorSkory->zapisz_do_pliku(plik);
+	 */
+	KontynentKolorSkory* kontynent_odczyt = new KontynentKolorSkory("Azja", "zolty");
+	ifstream plik("kontynentKolorSkory.txt");
 	kontynent_odczyt->odczyt_z_pliku(plik);
 	cout<<*kontynent_odczyt;
 /*

@@ -74,6 +74,7 @@ void Pasmo_gorskie::zapisz_do_pliku(ofstream& plik)
 {
 	if(plik)
 	{
+		plik<<"@"<<endl;
 		plik<<nazwa<<" "<<srednia_wysokosc<<" "<<najwyzszy_szczyt<<endl;
 	}
 	else

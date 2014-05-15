@@ -26,6 +26,8 @@ public:
 	friend ostream & operator<< (ostream &, KontynentKolorSkory &);
 
 	virtual string pokaz_ceche_charakterystyczna();
+	void zapisz_do_pliku(ofstream&);
+	void odczyt_z_pliku(ifstream&);
 
 private:
 	string kolor_skory;

@@ -80,3 +80,20 @@ void Pasmo_gorskie::zapisz_do_pliku(ofstream& plik)
 		debug("Blad w zapisie pasma do pliku");
 }
 
+void Pasmo_gorskie::odczyt_z_pliku(istream& plik)
+{
+	if(plik)
+	{
+		plik>>this->nazwa;
+		plik>>this->srednia_wysokosc;
+	}
+	else
+		debug("Blad w odczycie pasma z pliku");
+}
+
+void Pasmo_gorskie::odczyt_ze_strumienia(istream& stream)
+{
+	stream>>this->nazwa;
+	stream>>this->srednia_wysokosc;
+}
+

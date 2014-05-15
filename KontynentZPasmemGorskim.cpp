@@ -7,6 +7,7 @@
 
 #include "KontynentZPasmemGorskim.h"
 #include "Debugowanie.h"
+#include <sstream>
 
 KontynentZPasmemGorskim::KontynentZPasmemGorskim(string nazwa)
 :Kontynent(nazwa)
@@ -67,6 +68,11 @@ string KontynentZPasmemGorskim::najwyzsze_pasmo()
 ostream& operator<< (ostream& strumien, KontynentZPasmemGorskim& kontynentZPasmemGorskim)
 {
 	strumien<<"nazwa kontynentu: "<<kontynentZPasmemGorskim.pobierz_nazwe()<<endl;
+	strumien<<"powierzchnia kontynentu wynosi: "<<kontynentZPasmemGorskim.pobierz_powierzchnie()<<endl;
+	strumien<<"liczba panstw na tym kontynencie: "<<kontynentZPasmemGorskim.pobierz_liczbe_panstw()<<endl;
+	for(int i=0; i<kontynentZPasmemGorskim.pobierz_liczbe_panstw(); i++)
+			strumien<<"nazwa panstwa nr: "<<i<<" : "<<kontynentZPasmemGorskim[i]<<endl;
+	strumien<<"nazwa najwiekszego panstwa: "<<kontynentZPasmemGorskim.najwieksze_panstwo()<<endl;
 	strumien<<"liczba pasm: "<<kontynentZPasmemGorskim.pobierz_liczbe_pasm()<<endl;
 	for(int i=0; i<kontynentZPasmemGorskim.pobierz_liczbe_pasm(); i++)
 			strumien<<"nazwa pasma nr: "<<i<<" : "<<kontynentZPasmemGorskim.pasma[i]->pobierz_nazwe()<<endl;
@@ -98,4 +104,47 @@ void KontynentZPasmemGorskim::zapisz_do_pliku(ofstream& plik)
 	else
 		debug("Blad w zapisie kontynentuZpasmemGorskim do pliku");
 }
+
+void KontynentZPasmemGorskim::odczyt_z_pliku(ifstream& plik)
+{
+	if(plik)
+	{
+		string linia;
+		getline(plik, linia);
+		stringstream strumien(linia);
+		strumien >> nazwa;
+
+		while(1)
+		{
+			string line;
+			getline(plik,line);
+			stringstream linia(line);
+			if(line[0]=='#')
+			{
+				break;
+			}
+
+			if(line[0]=='@')
+			{
+				string line;
+				getline(plik,line);
+				stringstream linia(line);
+				Pasmo_gorskie* nowe_pasmo=new Pasmo_gorskie("pasmo",0);
+				nowe_pasmo->odczyt_z_pliku(linia);
+				this->dodaj_pasmo(nowe_pasmo);
+				continue;
+			}
+
+			if(line == "")
+				continue;
+			Panstwo* nowe_panstwo= new Panstwo("panstwo ", 0, 0);
+			nowe_panstwo->odczyt_z_pliku(linia);
+			this->dodaj_panstwo(nowe_panstwo);
+		}
+	}
+	else
+		debug("Blad w odczycie kontynentuZpasmem z pliku");
+}
+
+
 

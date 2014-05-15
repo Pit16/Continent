@@ -26,6 +26,8 @@ public:
 	friend ostream & operator<< (ostream &, Pasmo_gorskie &);
 
 	void zapisz_do_pliku(ofstream&);
+	void odczyt_z_pliku(istream& plik);
+	void odczyt_ze_strumienia(istream& stream);
 private:
 	string nazwa;
 	int srednia_wysokosc;

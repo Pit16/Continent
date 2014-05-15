@@ -42,8 +42,8 @@ int main(void)
 	austria->odczyt_z_pliku(plik);
 	cout<<*austria;
 	*/
-	Kontynent* kontynent_odczyt = new Kontynent("Do.odczytu");
-	ifstream plik("kontynent.txt");
+	KontynentZPasmemGorskim* kontynent_odczyt = new KontynentZPasmemGorskim("Do.odczytu");
+	ifstream plik("kontynentzpasmem.txt");
 	kontynent_odczyt->odczyt_z_pliku(plik);
 	cout<<*kontynent_odczyt;
 /*

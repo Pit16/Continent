@@ -165,9 +165,6 @@ void Kontynent::odczyt_z_pliku(ifstream& plik)
 {
 	if(plik)
 	{
-	//	plik>>nazwa;
-	//	string typ;
-	//	plik>>typ;
 		string linia;
 		getline(plik, linia);
 		stringstream strumien(linia);

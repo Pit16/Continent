@@ -15,3 +15,6 @@
 
 #Executives
 *.exe
+
+# Archives
+*.7z

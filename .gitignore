@@ -15,6 +15,14 @@
 
 #Executives
 *.exe
+Continent
+Testuj
+
+#build directories
+/build
+
+#user files
+*.user
 
 # Archives
 *.7z

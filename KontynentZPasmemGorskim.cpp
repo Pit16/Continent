@@ -66,6 +66,7 @@ string KontynentZPasmemGorskim::najwyzsze_pasmo()
 	return pasma[licznik]->pobierz_nazwe();
 }
 
+///wyswietlanie nazwy danego kontynentu, powierzchni, nazwy wszystkich panstw oraz pasm i cechy charakterystyczne
 ostream& operator<< (ostream& strumien, KontynentZPasmemGorskim& kontynentZPasmemGorskim)
 {
 	strumien<<"nazwa kontynentu: "<<kontynentZPasmemGorskim.pobierz_nazwe()<<endl;
@@ -105,7 +106,7 @@ void KontynentZPasmemGorskim::zapisz_do_pliku(ofstream& plik)
 	else
 		debug("Blad w zapisie kontynentuZpasmemGorskim do pliku");
 }
-
+///pozwala na odczytywanie danych z pliku
 void KontynentZPasmemGorskim::odczyt_z_pliku(ifstream& plik)
 {
 	if(plik)
@@ -115,36 +116,37 @@ void KontynentZPasmemGorskim::odczyt_z_pliku(ifstream& plik)
 		stringstream strumien(linia);
 		strumien >> nazwa;
 
-		panstwa.clear();
-		liczba_panstw = 0;
+		panstwa.clear();	///< czyszczenie wczesniej dodanych obiektow
+		liczba_panstw = 0;	///< po wyczyszczeniu nie ma panstw
 		pasma.clear();
 		liczba_pasm = 0;
+		///wczytywanie danych z pliku
 		while(1)
 		{
 			string line;
 			getline(plik,line);
 			stringstream linia(line);
-			if(line[0]=='#')
+			if(line[0]=='#')		///< znak specjalny, ktory oznacza koniec wczytywania
 			{
 				break;
 			}
 
-			if(line[0]=='@')
+			if(line[0]=='@')	///< znak specjalny, ktory oznacza koniec wczytywania panstw, a rozpoczyna wczytywanie pasm
 			{
 				string line;
 				getline(plik,line);
-				stringstream linia(line);
-				Pasmo_gorskie* nowe_pasmo=new Pasmo_gorskie("pasmo",0);
+				stringstream linia(line);	///< odczytywana jest cala linia
+				Pasmo_gorskie* nowe_pasmo=new Pasmo_gorskie("pasmo",0);	///< tworzenie nowego pasma, do ktorego zaraz beda wpisane dane z odczytywanego pliku
 				nowe_pasmo->odczyt_z_pliku(linia);
-				this->dodaj_pasmo(nowe_pasmo);
+				this->dodaj_pasmo(nowe_pasmo);	///< pasmo, ktore wlasnie zostalo pobrane z pliku, dodajemy do odpowiedniego kontynentu
 				continue;
 			}
 
 			if(line == "")
 				continue;
-			Panstwo* nowe_panstwo= new Panstwo("panstwo ", 0, 0);
+			Panstwo* nowe_panstwo= new Panstwo("panstwo ", 0, 0);	///< wczytywanie danych dla panstwa
 			nowe_panstwo->odczyt_z_pliku(linia);
-			this->dodaj_panstwo(nowe_panstwo);
+			this->dodaj_panstwo(nowe_panstwo);		///<dodanie panstwa do kontynentu
 		}
 	}
 	else

@@ -24,21 +24,27 @@ public:
 	///Destruktor
 	~Panstwo();
 
-	//gettery
-	///Funkcja zwraca nazwe panstwa
+	///gettery
+	/**np. Funkcja zwraca nazwe panstwa
+	 *
+	 */
 	string pobierz_nazwe();
+	///funkcja pobierajaca powierzchnie danego panstwa
 	int pobierz_powierzchnie();
 	int pobierz_populacje();
 	string pobierz_stolice();
 	string pobierz_jezyk();
 	int pobierz_pkb();
 
-	//settery
+	///settery
 	void ustaw_stolice(string stolica);
 	void ustaw_jezyk(string jezyk);
 	void ustaw_pkb(int pkb);
 
-	//operatory
+	///operatory
+	/**operatory mniejszosci, wiekszosci, przyrownania, porownania
+	 *
+	 */
 	bool operator<(const Panstwo &p );
 	bool operator>(const Panstwo &p );
 	bool operator==(const Panstwo &p );

@@ -30,9 +30,15 @@ public:
 	int srednie_zaludnienie();
 	void dodaj_panstwo(Panstwo* nowe_panstwo);
 	void usun_panstwo(int);
-	
+	/// funkcja virtualna
+	/**
+	 * dla kazdego kontynentu wypisuje charakterystyczna dla niego ceche
+	 */
 	virtual string pokaz_ceche_charakterystyczna();
-
+	/// metoda zapisujaca obiekt do pliku
+	/**
+	 *
+	 */
 	virtual void zapisz_do_pliku(ofstream&);
 	void odczyt_z_pliku(ifstream&);
 protected:
